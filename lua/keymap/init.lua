@@ -1,29 +1,45 @@
--- author: glepnr https://github.com/glepnir
--- date: 2022-07-02
--- License: MIT
--- recommend plugins key defines in this file
-
-require('keymap.config')
 local key = require('core.keymap')
-local nmap = key.nmap
-local silent, noremap = key.silent, key.noremap
-local opts = key.new_opts
-local cmd = key.cmd
+local utils = require('keymap.utils')
 
--- usage of plugins
-nmap({
-  -- packer
-  { '<Leader>pu', cmd('PackerUpdate'), opts(noremap, silent) },
-  { '<Leader>pi', cmd('PackerInstall'), opts(noremap, silent) },
-  { '<Leader>pc', cmd('PackerCompile'), opts(noremap, silent) },
-  -- dashboard
-  { '<Leader>n', cmd('DashboardNewFile'), opts(noremap, silent) },
-  { '<Leader>ss', cmd('SessionSave'), opts(noremap, silent) },
-  { '<Leader>sl', cmd('SessionLoad'), opts(noremap, silent) },
-  -- nvimtree
-  { '<Leader>e', cmd('NvimTreeToggle'), opts(noremap, silent) },
-  -- Telescope
-  { '<Leader>b', cmd('Telescope buffers'), opts(noremap, silent) },
-  { '<Leader>fa', cmd('Telescope live_grep'), opts(noremap, silent) },
-  { '<Leader>ff', cmd('Telescope find_files'), opts(noremap, silent) },
+local cmd = key.cmd
+local opts = key.new_opts
+local silent, noremap = key.silent, key.noremap
+
+key.nmap({
+  -- buffer movements
+  { '<c-h>', '<c-w>h', opts(silent) },
+  { '<c-j>', '<c-w>j', opts(silent) },
+  { '<c-k>', '<c-w>k', opts(silent) },
+  { '<c-l>', '<c-w>l', opts(silent) },
+
+  -- yank to end of line
+  { 'Y', 'y$', opts(noremap) },
+
+  -- telescope mappings
+  { '<c-f>', cmd('Telescope grep_string search=""'), opts(noremap, silent) },
+  { '<c-p>', utils.telescope_project_files, opts(noremap, silent) },
+
+  -- formatting
+  { '<leader>f', utils.format_buffer, opts(noremap, silent) },
+
+  -- open neotree
+  { '-', cmd('Neotree filesystem float reveal'), opts(noremap, silent) },
+})
+
+key.tmap({
+  -- buffer movements
+  { '<c-h>', '<c-w>h', opts(silent) },
+  { '<c-j>', '<c-w>j', opts(silent) },
+  { '<c-k>', '<c-w>k', opts(silent) },
+  { '<c-l>', '<c-w>l', opts(silent) },
+})
+
+key.vmap({
+  -- better indenting
+  { '<', '<gv', opts(noremap, silent) },
+  { '>', '>gv', opts(noremap, silent) },
+
+  -- move lines up and down
+  { 'J', ":m '>+1<CR>gv=gv", opts(noremap, silent) },
+  { 'K', ":m '<-2<CR>gv=gv", opts(noremap, silent) },
 })
