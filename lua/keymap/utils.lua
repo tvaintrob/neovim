@@ -14,12 +14,11 @@ M.format_buffer = function(bufnr)
   if not next(vim.lsp.get_active_clients({ bufnr = bufnr })) then
     vim.api.nvim_feedkeys('gg=G``', 'n', false)
   else
-    vim.lsp.buf.format({
-      bufnr = bufnr,
-      filter = function(client)
-        return client.name == 'null-ls'
-      end,
-    })
+    local filter = function(client)
+      return client.name == 'null-ls'
+    end
+
+    vim.lsp.buf.format({ bufnr = bufnr, filter = filter })
   end
 end
 
