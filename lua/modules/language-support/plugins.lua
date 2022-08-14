@@ -1,12 +1,11 @@
 local plugin = require('core.pack').register_plugin
-local require_file = require('core.utils').require_file
 
 plugin({
   'nvim-treesitter/nvim-treesitter',
   run = ':TSUpdate',
-  event = 'BufRead',
-  after = 'telescope.nvim',
-  config = require_file('modules.language-support.treesitter'),
+  config = function()
+    require('modules.language-support.treesitter')
+  end,
   requires = {
     { 'joosepalviste/nvim-ts-context-commentstring' },
   },
@@ -33,14 +32,17 @@ plugin({
     'javascript',
     'javascriptreact',
   },
-  after = 'nvim-cmp',
-  config = require_file('modules.language-support.lsp'),
+  config = function()
+    require('modules.language-support.lsp')
+  end,
   requires = {
+    { 'folke/lua-dev.nvim' },
+    { 'b0o/schemastore.nvim' },
+    { 'nvim-lua/plenary.nvim' },
     { 'jose-elias-alvarez/null-ls.nvim' },
     { 'williamboman/mason.nvim' },
     { 'williamboman/mason-lspconfig.nvim' },
     { 'whoissethdaniel/mason-tool-installer.nvim' },
-    { 'folke/lua-dev.nvim', ft = { 'lua' } },
-    { 'b0o/schemastore.nvim', ft = { 'json' } },
+    { 'hrsh7th/cmp-nvim-lsp' },
   },
 })

@@ -3,24 +3,33 @@
 -- License: MIT
 
 local plugin = require('core.pack').register_plugin
-local conf = require('modules.ui.config')
-
-plugin({ 'glepnir/zephyr-nvim', config = conf.zephyr })
-
-plugin({ 'glepnir/dashboard-nvim', config = conf.dashboard })
 
 plugin({
-  'glepnir/galaxyline.nvim',
+  'luisiacc/gruvbox-baby',
   branch = 'main',
-  config = conf.galaxyline,
-  requires = 'kyazdani42/nvim-web-devicons',
+  config = function()
+    vim.cmd([[colorscheme gruvbox-baby]])
+  end,
 })
 
 plugin({
-  'kyazdani42/nvim-tree.lua',
-  cmd = 'NvimTreeToggle',
-  config = conf.nvim_tree,
-  requires = 'kyazdani42/nvim-web-devicons',
+  'feline-nvim/feline.nvim',
+  config = function()
+    require('feline').setup({})
+    require('feline').winbar.setup({})
+  end,
 })
 
-plugin({ 'akinsho/nvim-bufferline.lua', config = conf.nvim_bufferline, requires = 'kyazdani42/nvim-web-devicons' })
+-- plugin({
+--   'glepnir/galaxyline.nvim',
+--   branch = 'main',
+--   config = conf.galaxyline,
+--   requires = 'kyazdani42/nvim-web-devicons',
+-- })
+
+-- plugin({
+--   'strash/everybody-wants-that-line.nvim',
+--   config = function()
+--     require('everybody-wants-that-line').setup({})
+--   end,
+-- })

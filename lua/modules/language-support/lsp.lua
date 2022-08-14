@@ -45,9 +45,9 @@ null_ls.setup({
   sources = {
     null_ls.builtins.code_actions.eslint_d,
 
-    null_ls.diagnostics.hadolint,
-    null_ls.diagnostics.shellcheck,
-    null_ls.diagnostics.golangci_lint,
+    -- null_ls.diagnostics.hadolint,
+    -- null_ls.diagnostics.shellcheck,
+    -- null_ls.diagnostics.golangci_lint,
 
     null_ls.builtins.formatting.shfmt,
     null_ls.builtins.formatting.stylua,
@@ -84,18 +84,10 @@ local common_setup_handler = function(server_name)
     ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'single' }),
   }
 
-  local capabilities = vim.lsp.protocol.make_client_capabilities()
-  local status_ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
-  if status_ok then
-    capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
-  else
-    vim.notify('cmd-nvim-lsp not loaded', vim.log.levels.WARN)
-  end
-
   local default_opts = {
     handlers = handlers,
     on_attach = common_on_attach,
-    capabilities = capabilities,
+    capabilities = vim.lsp.protocol.make_client_capabilities(),
   }
 
   local server_overrides = {

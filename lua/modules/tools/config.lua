@@ -1,35 +1,51 @@
--- author: glepnr https://github.com/glepnir
--- date: 2022-07-02
--- License: MIT
-
 local config = {}
 
 function config.telescope()
   if not packer_plugins['plenary.nvim'].loaded then
     vim.cmd([[packadd plenary.nvim]])
     vim.cmd([[packadd popup.nvim]])
-    vim.cmd([[packadd telescope-fzy-native.nvim]])
-    vim.cmd([[packadd telescope-file-browser.nvim]])
+    vim.cmd([[packadd telescope-fzf-native.nvim]])
   end
+
+  local actions = require('telescope.actions')
   require('telescope').setup({
     defaults = {
-      layout_config = {
-        horizontal = { prompt_position = 'top', results_width = 0.6 },
-        vertical = { mirror = false },
+      mappings = {
+        i = {
+          ['<esc>'] = actions.close,
+          ['<c-j>'] = actions.move_selection_next,
+          ['<c-k>'] = actions.move_selection_previous,
+        },
       },
-      sorting_strategy = 'ascending',
-      file_previewer = require('telescope.previewers').vim_buffer_cat.new,
-      grep_previewer = require('telescope.previewers').vim_buffer_vimgrep.new,
-      qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new,
     },
+
     extensions = {
-      fzy_native = {
-        override_generic_sorter = false,
+      fzf = {
+        fuzzy = true,
+        case_mode = 'smart_case',
         override_file_sorter = true,
+        override_generic_sorter = true,
       },
     },
   })
-  require('telescope').load_extension('fzy_native')
+  require('telescope').load_extension('fzf')
+end
+
+function config.neotree()
+  require('neo-tree').setup({
+    close_if_last_window = true,
+    default_component_configs = { indent = { padding = 1, indent_size = 4 } },
+    window = { position = 'float' },
+    filesystem = {
+      follow_current_file = true,
+      window = {
+        mappings = {
+          ['^'] = 'navigate_up',
+          ['I'] = 'toggle_hidden',
+        },
+      },
+    },
+  })
 end
 
 return config
