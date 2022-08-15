@@ -69,12 +69,10 @@ local common_on_attach = function(_, bufnr)
   keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
   keymap(bufnr, 'n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
   keymap(bufnr, 'n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
-  keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
+  keymap(bufnr, 'n', 'gr', '<cmd>Telescope lsp_references<cr>', opts)
   keymap(bufnr, 'n', '<leader>ac', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
-  keymap(bufnr, 'n', '<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-  keymap(bufnr, 'n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>', opts)
-  keymap(bufnr, 'n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<cr>', opts)
-  keymap(bufnr, 'n', '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+  keymap(bufnr, 'n', '<leader>d', '<cmd>lua vim.diagnostic.open_float({ scope = "line", border = "single" })<CR>', opts)
+  keymap(bufnr, 'n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
 end
 
 -- handle lsp server initialization

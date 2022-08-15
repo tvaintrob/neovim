@@ -10,6 +10,14 @@ plugin({
 })
 
 plugin({
+  'stevearc/dressing.nvim',
+  requires = { 'muniftanjim/nui.nvim' },
+  config = function()
+    require('dressing').setup({})
+  end,
+})
+
+plugin({
   'nvim-lualine/lualine.nvim',
   requires = {
     { 'kyazdani42/nvim-web-devicons', opt = true },
