@@ -27,3 +27,12 @@ plugin({
     'kyazdani42/nvim-web-devicons',
   },
 })
+
+plugin({
+  'andrewferrier/debugprint.nvim',
+  config = function()
+    require('debugprint').setup()
+  end,
+})
+
+plugin({ 'gpanders/editorconfig.nvim' })

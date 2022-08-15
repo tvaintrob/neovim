@@ -1,35 +1,45 @@
--- author: glepnr https://github.com/glepnir
--- date: 2022-07-02
--- License: MIT
-
 local plugin = require('core.pack').register_plugin
 
 plugin({
-  'luisiacc/gruvbox-baby',
+  'folke/tokyonight.nvim',
   branch = 'main',
   config = function()
-    vim.cmd([[colorscheme gruvbox-baby]])
+    vim.g.tokyonight_style = 'night'
+    vim.cmd([[ colorscheme tokyonight ]])
   end,
 })
 
 plugin({
-  'feline-nvim/feline.nvim',
+  'nvim-lualine/lualine.nvim',
+  requires = {
+    { 'kyazdani42/nvim-web-devicons', opt = true },
+  },
   config = function()
-    require('feline').setup({})
-    require('feline').winbar.setup({})
+    local function lsp_server_names()
+      local servers = vim.lsp.get_active_clients({ bufnr = 0 })
+      local names = 'connected servers: '
+
+      for i, server in ipairs(servers) do
+        if i == 1 then
+          names = names .. server.name
+        else
+          names = names .. ' | ' .. server.name
+        end
+      end
+
+      return names
+    end
+
+    require('lualine').setup({
+      options = {
+        theme = 'auto',
+        section_separators = '',
+        component_separators = '',
+      },
+
+      sections = {
+        lualine_x = { lsp_server_names, 'encoding', 'fileformat', 'filetype' },
+      },
+    })
   end,
 })
-
--- plugin({
---   'glepnir/galaxyline.nvim',
---   branch = 'main',
---   config = conf.galaxyline,
---   requires = 'kyazdani42/nvim-web-devicons',
--- })
-
--- plugin({
---   'strash/everybody-wants-that-line.nvim',
---   config = function()
---     require('everybody-wants-that-line').setup({})
---   end,
--- })
