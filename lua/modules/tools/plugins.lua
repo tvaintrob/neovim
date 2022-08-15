@@ -36,3 +36,7 @@ plugin({
 })
 
 plugin({ 'gpanders/editorconfig.nvim' })
+plugin({ 'tpope/vim-repeat' })
+plugin({ 'tpope/vim-surround' })
+plugin({ 'tpope/vim-sensible' })
+plugin({ 'tpope/vim-commentary' })
