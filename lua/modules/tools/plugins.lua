@@ -1,7 +1,3 @@
--- author: glepnr https://github.com/glepnir
--- date: 2022-07-02
--- License: MIT
-
 local plugin = require('core.pack').register_plugin
 local conf = require('modules.tools.config')
 
@@ -32,6 +28,17 @@ plugin({
   'andrewferrier/debugprint.nvim',
   config = function()
     require('debugprint').setup()
+  end,
+})
+
+plugin({
+  'akinsho/toggleterm.nvim',
+  tag = 'v2.*',
+  config = function()
+    require('toggleterm').setup({
+      size = 20,
+      open_mapping = [[<leader>t]],
+    })
   end,
 })
 
