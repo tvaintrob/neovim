@@ -17,7 +17,7 @@ function config.nvim_cmp()
 
   cmp.setup({
     preselect = cmp.PreselectMode.Item,
-    formatting = { format = require('lspkind').cmp_format({ mode = 'symbol', maxwidth = 50 }) },
+    formatting = { format = require('lspkind').cmp_format() },
     snippet = {
       expand = function(args)
         vim.fn['vsnip#anonymous'](args.body)

@@ -1,3 +1,4 @@
+require('modules.ui.config')
 local plugin = require('core.pack').register_plugin
 
 plugin({
@@ -5,6 +6,14 @@ plugin({
   branch = 'main',
   config = function()
     vim.g.tokyonight_style = 'night'
+    vim.g.tokyonight_lualine_bold = true
+
+    vim.cmd([[
+      augroup MyColors
+        autocmd!
+        autocmd ColorScheme * highlight LineNr guifg=#5081c0   | highlight CursorLineNR guifg=#FFba00
+      augroup END
+    ]])
     vim.cmd([[ colorscheme tokyonight ]])
   end,
 })
