@@ -34,12 +34,7 @@ plugin({
 plugin({
   'akinsho/toggleterm.nvim',
   tag = 'v2.*',
-  config = function()
-    require('toggleterm').setup({
-      size = 20,
-      open_mapping = [[<leader>t]],
-    })
-  end,
+  config = conf.toggleterm,
 })
 
 plugin({ 'gpanders/editorconfig.nvim' })

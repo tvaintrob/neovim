@@ -48,4 +48,29 @@ function config.neotree()
   })
 end
 
+function config.toggleterm()
+  require('toggleterm').setup({
+    size = 20,
+    open_mapping = [[<leader>t]],
+  })
+
+  local Terminal = require('toggleterm.terminal').Terminal
+  local lazygit = Terminal:new({
+    cmd = 'lazygit',
+    dir = 'git_dir',
+    direction = 'float',
+    float_opts = { border = 'single' },
+    on_open = function(term)
+      vim.cmd('startinsert!')
+      vim.api.nvim_buf_set_keymap(term.bufnr, 'n', 'q', '<cmd>close<CR>', { noremap = true, silent = true })
+    end,
+  })
+
+  local function _lazygit_toggle()
+    lazygit:toggle()
+  end
+
+  vim.keymap.set('n', '<leader>lg', _lazygit_toggle, { noremap = true, silent = true })
+end
+
 return config
