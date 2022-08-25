@@ -7,6 +7,10 @@ treesitter.setup({
   ensure_installed = 'all',
   ignore_install = { 'haskell', 'phpdoc' },
   indent = { enable = true },
+  autotag = { enable = true },
+  endwise = { enable = true },
   highlight = { enable = true },
   context_commentstring = { enable = true },
 })
+
+require('nvim-autopairs').setup({})

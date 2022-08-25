@@ -8,6 +8,9 @@ plugin({
   end,
   requires = {
     { 'joosepalviste/nvim-ts-context-commentstring' },
+    { 'windwp/nvim-autopairs' },
+    { 'windwp/nvim-ts-autotag' },
+    { 'RRethy/nvim-treesitter-endwise' },
   },
 })
 
