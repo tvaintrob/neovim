@@ -32,9 +32,20 @@ plugin({
 })
 
 plugin({
+  'folke/which-key.nvim',
+  config = function()
+    require('which-key').setup({})
+  end,
+})
+
+plugin({
   'akinsho/toggleterm.nvim',
   tag = 'v2.*',
   config = conf.toggleterm,
+})
+
+plugin({
+  'tpope/vim-fugitive',
 })
 
 plugin({ 'gpanders/editorconfig.nvim' })

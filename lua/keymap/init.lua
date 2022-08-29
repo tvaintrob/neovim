@@ -1,5 +1,6 @@
 local key = require('core.keymap')
 local utils = require('keymap.utils')
+local wk = require('which-key')
 
 local cmd = key.cmd
 local opts = key.new_opts
