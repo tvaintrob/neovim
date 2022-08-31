@@ -44,15 +44,12 @@ null_ls.setup({
   debug = true,
   sources = {
     null_ls.builtins.code_actions.eslint_d,
-
-    -- null_ls.diagnostics.hadolint,
-    -- null_ls.diagnostics.shellcheck,
-    -- null_ls.diagnostics.golangci_lint,
+    null_ls.builtins.diagnostics.golangci_lint,
 
     null_ls.builtins.formatting.shfmt,
     null_ls.builtins.formatting.stylua,
     null_ls.builtins.formatting.eslint_d,
-    null_ls.builtins.formatting.prettierd,
+    null_ls.builtins.formatting.prettier,
     null_ls.builtins.formatting.goimports,
     null_ls.builtins.formatting.black.with({ args = { '-' } }),
   },
