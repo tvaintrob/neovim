@@ -2,6 +2,8 @@ local mason = require('mason')
 local mason_lspconfig = require('mason-lspconfig')
 local mason_tool_install = require('mason-tool-installer')
 local null_ls = require('null-ls')
+
+require('neodev').setup({})
 local lsp_config = require('lspconfig')
 
 mason.setup({})
@@ -106,7 +108,6 @@ local common_setup_handler = function(server_name)
     },
     jsonls = { settings = { json = { schemas = require('schemastore').json.schemas() } } },
     tsserver = { commands = { OrganizeImports = { organize_imports } } },
-    sumneko_lua = require('lua-dev').setup(default_opts),
   }
 
   local server_opts = vim.tbl_extend('force', default_opts, server_overrides[server_name] or {})

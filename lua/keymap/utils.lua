@@ -18,7 +18,7 @@ M.format_buffer = function(bufnr)
       return client.name == 'null-ls'
     end
 
-    vim.lsp.buf.format({ bufnr = bufnr, filter = filter })
+    vim.lsp.buf.format({ bufnr = bufnr, filter = filter, timeout_ms = 2000 })
   end
 end
 
