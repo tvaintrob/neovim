@@ -44,3 +44,4 @@ vim.opt.eadirection = 'hor'
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 vim.opt.updatetime = 750
 vim.opt.foldlevel = 10
+vim.opt.cmdheight = 0
