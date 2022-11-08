@@ -11,6 +11,7 @@ plugin({
     { 'windwp/nvim-autopairs' },
     { 'windwp/nvim-ts-autotag' },
     { 'RRethy/nvim-treesitter-endwise' },
+    { 'nvim-treesitter/nvim-treesitter-context' },
   },
 })
 
