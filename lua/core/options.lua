@@ -10,6 +10,7 @@ vim.opt.backup = false
 vim.opt.writebackup = false
 vim.opt.swapfile = false
 vim.opt.directory = cache_dir .. 'swag/'
+vim.opt.undofile = true
 vim.opt.undodir = cache_dir .. 'undo/'
 vim.opt.backupdir = cache_dir .. 'backup/'
 vim.opt.viewdir = cache_dir .. 'view/'
