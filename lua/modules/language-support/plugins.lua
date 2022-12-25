@@ -48,5 +48,6 @@ plugin({
     { 'williamboman/mason-lspconfig.nvim' },
     { 'whoissethdaniel/mason-tool-installer.nvim' },
     { 'hrsh7th/cmp-nvim-lsp' },
+    { 'weilbith/nvim-code-action-menu' },
   },
 })

@@ -18,26 +18,29 @@ mason_tool_install.setup({
     'css-lsp',
     'html-lsp',
     'json-lsp',
+    'eslint-lsp',
     'rust-analyzer',
     'vim-language-server',
     'lua-language-server',
     'yaml-language-server',
     'bash-language-server',
+    'prisma-language-server',
     'dockerfile-language-server',
     'typescript-language-server',
+    'tailwindcss-language-server',
 
     -- ensure formatters installed
-    'black',
+    'buf',
     'isort',
+    'black',
     'shfmt',
     'stylua',
-    'prettier',
     'gofumpt',
+    'prettier',
     'goimports',
     'prettierd',
 
     -- ensure linters installed
-    'eslint_d',
     'hadolint',
     'golangci-lint',
   },
@@ -46,12 +49,10 @@ mason_tool_install.setup({
 null_ls.setup({
   debug = true,
   sources = {
-    null_ls.builtins.code_actions.eslint_d,
     null_ls.builtins.diagnostics.golangci_lint,
 
     null_ls.builtins.formatting.shfmt,
     null_ls.builtins.formatting.stylua,
-    null_ls.builtins.formatting.eslint_d,
     null_ls.builtins.formatting.prettier,
     null_ls.builtins.formatting.goimports,
     null_ls.builtins.formatting.gofumpt,
@@ -73,7 +74,7 @@ local common_on_attach = function(_, bufnr)
   keymap(bufnr, 'n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
   keymap(bufnr, 'n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
   keymap(bufnr, 'n', 'gr', '<cmd>Telescope lsp_references<cr>', opts)
-  keymap(bufnr, 'n', '<leader>ac', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+  keymap(bufnr, 'n', '<leader>ac', '<cmd>CodeActionMenu<cr>', opts)
   keymap(bufnr, 'n', '<leader>d', '<cmd>lua vim.diagnostic.open_float({ scope = "line", border = "single" })<CR>', opts)
   keymap(bufnr, 'n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
 end
