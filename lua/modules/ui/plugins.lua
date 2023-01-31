@@ -2,19 +2,11 @@ require('modules.ui.config')
 local plugin = require('core.pack').register_plugin
 
 plugin({
-  'folke/tokyonight.nvim',
-  branch = 'main',
+  'rose-pine/neovim',
+  as = 'rose-pine',
   config = function()
-    vim.g.tokyonight_style = 'night'
-    vim.g.tokyonight_lualine_bold = true
-
-    vim.cmd([[
-      augroup MyColors
-        autocmd!
-        autocmd ColorScheme * highlight LineNr guifg=#5081c0   | highlight CursorLineNR guifg=#FFba00
-      augroup END
-    ]])
-    vim.cmd([[ colorscheme tokyonight ]])
+    require('rose-pine').setup({ dark_variant = 'moon' })
+    vim.cmd([[ colorscheme rose-pine ]])
   end,
 })
 
