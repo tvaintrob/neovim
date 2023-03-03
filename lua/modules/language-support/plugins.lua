@@ -15,6 +15,8 @@ plugin({
   },
 })
 
+plugin({ 'tjvr/vim-nearley' })
+
 plugin({
   'neovim/nvim-lspconfig',
   -- used filetype to lazyload lsp
@@ -49,5 +51,6 @@ plugin({
     { 'whoissethdaniel/mason-tool-installer.nvim' },
     { 'hrsh7th/cmp-nvim-lsp' },
     { 'weilbith/nvim-code-action-menu' },
+    { 'simrat39/rust-tools.nvim' },
   },
 })

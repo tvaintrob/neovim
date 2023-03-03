@@ -18,8 +18,8 @@ function config.telescope()
         },
       },
     },
-
     extensions = {
+      ['ui-select'] = { require('telescope.themes').get_cursor({}) },
       fzf = {
         fuzzy = true,
         case_mode = 'smart_case',
@@ -29,6 +29,7 @@ function config.telescope()
     },
   })
   require('telescope').load_extension('fzf')
+  require('telescope').load_extension('ui-select')
 end
 
 function config.neotree()

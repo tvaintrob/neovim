@@ -51,6 +51,7 @@ null_ls.setup({
   sources = {
     null_ls.builtins.diagnostics.golangci_lint,
 
+    null_ls.builtins.formatting.rustfmt,
     null_ls.builtins.formatting.shfmt,
     null_ls.builtins.formatting.stylua,
     null_ls.builtins.formatting.prettier,
@@ -58,6 +59,7 @@ null_ls.setup({
     null_ls.builtins.formatting.gofumpt,
     null_ls.builtins.formatting.prismaFmt,
     null_ls.builtins.formatting.buf,
+    null_ls.builtins.formatting.isort,
     null_ls.builtins.formatting.black.with({ args = { '-' } }),
   },
 })
@@ -74,20 +76,20 @@ local common_on_attach = function(_, bufnr)
   keymap(bufnr, 'n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
   keymap(bufnr, 'n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
   keymap(bufnr, 'n', 'gr', '<cmd>Telescope lsp_references<cr>', opts)
-  keymap(bufnr, 'n', '<leader>ac', '<cmd>CodeActionMenu<cr>', opts)
+  keymap(bufnr, 'n', '<leader>ac', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
   keymap(bufnr, 'n', '<leader>d', '<cmd>lua vim.diagnostic.open_float({ scope = "line", border = "single" })<CR>', opts)
   keymap(bufnr, 'n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
 end
 
+local common_handlers = {
+  ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'single' }),
+  ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'single' }),
+}
+
 -- handle lsp server initialization
 local common_setup_handler = function(server_name)
-  local handlers = {
-    ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'single' }),
-    ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'single' }),
-  }
-
   local default_opts = {
-    handlers = handlers,
+    handlers = common_handlers,
     on_attach = common_on_attach,
     capabilities = vim.lsp.protocol.make_client_capabilities(),
   }
@@ -119,4 +121,14 @@ local common_setup_handler = function(server_name)
   lsp_config[server_name].setup(server_opts)
 end
 
-mason_lspconfig.setup_handlers({ common_setup_handler })
+mason_lspconfig.setup_handlers({
+  common_setup_handler,
+  ['rust_analyzer'] = function()
+    require('rust-tools').setup({
+      server = {
+        on_attach = common_on_attach,
+        handlers = common_handlers,
+      },
+    })
+  end,
+})
