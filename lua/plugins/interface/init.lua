@@ -16,5 +16,10 @@ return {
     config = lualine.config,
   },
 
-  { 'f-person/git-blame.nvim' },
+  {
+    'f-person/git-blame.nvim',
+    config = function()
+      vim.g.gitblame_date_format = '%r'
+    end,
+  },
 }

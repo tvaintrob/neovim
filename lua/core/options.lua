@@ -49,9 +49,3 @@ vim.opt.eadirection = 'hor'
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 vim.opt.updatetime = 750
 vim.opt.foldlevel = 10
-
--- TODO: move to seperate files related to the specific plugin
-vim.g.gitblame_date_format = '%r'
-vim.g.neo_tree_remove_legacy_commands = 1
-
-vim.cmd([[ colorscheme habamax ]])
