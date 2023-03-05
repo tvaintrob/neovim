@@ -18,3 +18,7 @@ vim.keymap.set('v', '>', '>gv', { silent = true, noremap = true })
 -- move lines up and down
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { silent = true, noremap = true })
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { silent = true, noremap = true })
+
+-- disable command history
+vim.keymap.set('n', 'Q', '<nop>', { noremap = true })
+vim.keymap.set('n', 'q:', '<nop>', { noremap = true })
