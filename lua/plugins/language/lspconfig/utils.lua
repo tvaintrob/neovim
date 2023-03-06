@@ -1,7 +1,19 @@
 local M = {}
 
-function M.on_attach(_, bufnr)
+function M.format_buffer(bufnr)
+  local filter = function(client)
+    return client.name ~= 'tsserver'
+  end
+
+  vim.lsp.buf.format({ bufnr = bufnr, filter = filter, timeout_ms = 2000 })
+end
+
+function M.on_attach(client, bufnr)
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  if client.server_capabilities.documentSymbolProvider then
+    require('nvim-navic').attach(client, bufnr)
+  end
 
   -- set buffer local keymaps when attaching an LSP
   local opts = { silent = true, noremap = true, buffer = bufnr }
@@ -11,6 +23,7 @@ function M.on_attach(_, bufnr)
   vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
   vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<cr>', opts)
   vim.keymap.set('n', '<leader>ac', vim.lsp.buf.code_action, opts)
+  vim.keymap.set('n', '<leader>f', M.format_buffer, opts)
   vim.keymap.set(
     'n',
     '<leader>d',

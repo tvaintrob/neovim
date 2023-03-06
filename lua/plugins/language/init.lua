@@ -1,4 +1,5 @@
 local lspconfig = require('plugins.language.lspconfig')
+local null_ls = require('plugins.language.null_ls')
 
 return {
   {
@@ -9,8 +10,47 @@ return {
       'williamboman/mason-lspconfig.nvim',
       { 'folke/neodev.nvim', config = true },
       { 'simrat39/rust-tools.nvim' },
+      {
+        'SmiteshP/nvim-navic',
+        opts = {
+          icons = {
+            File = ' ',
+            Module = ' ',
+            Namespace = ' ',
+            Package = ' ',
+            Class = ' ',
+            Method = ' ',
+            Property = ' ',
+            Field = ' ',
+            Constructor = ' ',
+            Enum = ' ',
+            Interface = ' ',
+            Function = ' ',
+            Variable = ' ',
+            Constant = ' ',
+            String = ' ',
+            Number = ' ',
+            Boolean = ' ',
+            Array = ' ',
+            Object = ' ',
+            Key = ' ',
+            Null = ' ',
+            EnumMember = ' ',
+            Struct = ' ',
+            Event = ' ',
+            Operator = ' ',
+            TypeParameter = ' ',
+          },
+        },
+      },
     },
     config = lspconfig.config,
+  },
+
+  {
+    'jose-elias-alvarez/null-ls.nvim',
+    event = { 'BufReadPost', 'BufNewFile' },
+    config = null_ls.config,
   },
 
   {

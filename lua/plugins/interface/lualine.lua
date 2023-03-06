@@ -19,7 +19,7 @@ function M.config()
       component_separators = '',
     },
     sections = {
-      lualine_c = { 'filename', 'lsp_progress' },
+      lualine_c = { 'filename', require('nvim-navic').get_location, 'lsp_progress' },
       lualine_x = { lsp_server_names, 'encoding', 'fileformat', 'filetype' },
     },
   })

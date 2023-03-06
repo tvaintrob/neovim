@@ -1,4 +1,5 @@
 local utils = require('core.utils')
+local nvim_cmp = require('plugins.editor.nvim_cmp')
 local treesitter = require('plugins.editor.treesitter')
 
 return {
@@ -30,6 +31,23 @@ return {
       { '<leader>t', '<cmd>ToggleTerm<cr>', mode = { 'n', 't' } },
       { '<leader>vt', '<cmd>ToggleTerm direction=vertical size=100<cr>', mode = { 'n', 't' } },
       { '<leader>lg', utils.delegate('plugins.editor.toggleterm', 'lazygit_toggle', {}) },
+    },
+  },
+
+  {
+    'hrsh7th/nvim-cmp',
+    version = false,
+    event = 'InsertEnter',
+    config = nvim_cmp.config,
+    dependencies = {
+      { 'hrsh7th/vim-vsnip' },
+      { 'onsails/lspkind-nvim' },
+      { 'hrsh7th/cmp-path' },
+      { 'hrsh7th/cmp-vsnip' },
+      { 'hrsh7th/cmp-buffer' },
+      { 'hrsh7th/cmp-nvim-lsp' },
+      { 'hrsh7th/cmp-nvim-lua' },
+      { 'hrsh7th/cmp-nvim-lsp-signature-help' },
     },
   },
 }
