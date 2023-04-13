@@ -37,10 +37,13 @@ M.handlers = {
   ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'single' }),
 }
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
 M.server_defaults = {
   handlers = M.handlers,
   on_attach = M.on_attach,
-  capabilities = vim.lsp.protocol.make_client_capabilities(),
+  capabilities = capabilities,
 }
 
 function M.override_with(opts)

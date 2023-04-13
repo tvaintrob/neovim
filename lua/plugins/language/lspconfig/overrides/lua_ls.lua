@@ -5,7 +5,10 @@ return function()
   require('lspconfig').lua_ls.setup(utils.override_with({
     before_init = require('neodev.lsp').before_init,
     settings = {
-      Lua = { diagnostics = { globals = { 'vim' } } },
+      Lua = {
+        diagnostics = { globals = { 'vim' } },
+        workspace = { checkThirdParty = false },
+      },
     },
   }))
 end

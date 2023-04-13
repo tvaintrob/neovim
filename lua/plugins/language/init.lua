@@ -8,11 +8,13 @@ return {
     dependencies = {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
+      'b0o/schemastore.nvim',
       { 'folke/neodev.nvim', config = true },
       { 'simrat39/rust-tools.nvim' },
       {
         'SmiteshP/nvim-navic',
         opts = {
+          highlight = true,
           icons = {
             File = ' ',
             Module = ' ',

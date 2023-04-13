@@ -25,10 +25,19 @@ return {
     end,
   },
 
+  { 'lewis6991/gitsigns.nvim', config = true, event = { 'BufReadPost', 'BufNewFile' } },
   {
-    'lewis6991/gitsigns.nvim',
-    config = true,
-    event = { 'BufReadPre', 'BufNewFile' },
+    'stevearc/dressing.nvim',
+    dependencies = { 'nvim-telescope/telescope.nvim' },
+    event = { 'BufReadPost', 'BufNewFile' },
+    config = function()
+      require('dressing').setup({
+        select = {
+          backend = { 'telescope', 'builtin' },
+          telescope = require('telescope.themes').get_cursor(),
+        },
+      })
+    end,
   },
 
   {

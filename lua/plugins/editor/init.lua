@@ -5,7 +5,6 @@ local treesitter = require('plugins.editor.treesitter')
 return {
   { 'tpope/vim-repeat', event = { 'BufReadPost', 'BufNewFile' } },
   { 'tpope/vim-commentary', event = { 'BufReadPost', 'BufNewFile' } },
-  { 'gpanders/editorconfig.nvim', event = { 'BufReadPost', 'BufNewFile' } },
   { 'windwp/nvim-autopairs', event = { 'BufReadPost', 'BufNewFile' }, config = true },
   { 'kylechui/nvim-surround', event = { 'BufReadPost', 'BufNewFile' }, config = true },
 
@@ -44,6 +43,7 @@ return {
       { 'onsails/lspkind-nvim' },
       { 'hrsh7th/cmp-path' },
       { 'hrsh7th/cmp-vsnip' },
+      { 'hrsh7th/cmp-emoji' },
       { 'hrsh7th/cmp-buffer' },
       { 'hrsh7th/cmp-nvim-lsp' },
       { 'hrsh7th/cmp-nvim-lua' },

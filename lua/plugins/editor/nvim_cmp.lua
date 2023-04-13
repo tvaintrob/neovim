@@ -58,6 +58,7 @@ function M.config()
       { name = 'vsnip' },
       { name = 'path' },
       { name = 'nvim_lua' },
+      { name = 'emoji' },
     }, {
       { name = 'buffer' },
     }),
