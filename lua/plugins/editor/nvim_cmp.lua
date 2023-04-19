@@ -15,6 +15,11 @@ function M.config()
     vim.api.nvim_feedkeys(keys, mode, true)
   end
 
+  local border_opts = {
+    border = 'solid',
+    winhighlight = 'Normal:RosePineOverlay,FloatBorder:RosePineOverlay,CursorLine:Visual,Search:None',
+  }
+
   cmp.setup({
     preselect = cmp.PreselectMode.Item,
     formatting = { format = require('lspkind').cmp_format({ mode = 'symbol_text' }) },
@@ -24,8 +29,8 @@ function M.config()
       end,
     },
     window = {
-      completion = cmp.config.window.bordered(),
-      documentation = cmp.config.window.bordered(),
+      completion = cmp.config.window.bordered(border_opts),
+      documentation = cmp.config.window.bordered(border_opts),
     },
     mapping = mapping.preset.insert({
       ['<Tab>'] = cmp.mapping(function(fallback)

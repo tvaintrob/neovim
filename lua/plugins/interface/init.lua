@@ -11,6 +11,18 @@ return {
   },
 
   {
+    'NvChad/nvim-colorizer.lua',
+    event = { 'BufReadPost', 'BufNewFile' },
+    opts = {
+      user_default_options = {
+        css = true,
+        tailwind = true,
+        always_update = true,
+      },
+    },
+  },
+
+  {
     'nvim-lualine/lualine.nvim',
     event = { 'BufReadPost', 'BufNewFile' },
     dependencies = { 'nvim-tree/nvim-web-devicons', 'arkav/lualine-lsp-progress' },
