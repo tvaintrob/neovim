@@ -1,6 +1,6 @@
 # Neovim Config
 
-personal neovim configuration, based on glepnir's [cosynvim](https://github.com/glepnir/cosynvim)
+personal neovim configuration, originaly based on glepnir's [cosynvim](https://github.com/glepnir/cosynvim), now based on [Lazy.nvim](https://github.com/folke/lazy.nvim)
 
 ## Installation
 

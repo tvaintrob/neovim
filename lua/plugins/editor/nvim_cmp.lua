@@ -1,6 +1,6 @@
-local config = {}
+local M = {}
 
-function config.nvim_cmp()
+function M.config()
   local cmp = require('cmp')
   local types = require('cmp.types')
   local mapping = require('cmp.config.mapping')
@@ -15,20 +15,23 @@ function config.nvim_cmp()
     vim.api.nvim_feedkeys(keys, mode, true)
   end
 
+  local border_opts = {
+    border = 'solid',
+    winhighlight = 'Normal:RosePineOverlay,FloatBorder:RosePineOverlay,CursorLine:Visual,Search:None',
+  }
+
   cmp.setup({
     preselect = cmp.PreselectMode.Item,
-    formatting = { format = require('lspkind').cmp_format() },
+    formatting = { format = require('lspkind').cmp_format({ mode = 'symbol_text' }) },
     snippet = {
       expand = function(args)
         vim.fn['vsnip#anonymous'](args.body)
       end,
     },
-
     window = {
-      completion = cmp.config.window.bordered(),
-      documentation = cmp.config.window.bordered(),
+      completion = cmp.config.window.bordered(border_opts),
+      documentation = cmp.config.window.bordered(border_opts),
     },
-
     mapping = mapping.preset.insert({
       ['<Tab>'] = cmp.mapping(function(fallback)
         if cmp.visible() then
@@ -41,7 +44,6 @@ function config.nvim_cmp()
           fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
         end
       end, { 'i', 's' }),
-
       ['<S-Tab>'] = cmp.mapping(function()
         if cmp.visible() then
           cmp.select_prev_item()
@@ -49,24 +51,23 @@ function config.nvim_cmp()
           feedkey('<Plug>(vsnip-jump-prev)', '')
         end
       end, { 'i', 's' }),
-
       ['<C-Space>'] = mapping.complete({}),
       ['<C-e>'] = mapping.abort(),
       ['<C-j>'] = mapping(mapping.select_next_item({ behavior = types.cmp.SelectBehavior.Insert }), { 'i', 'c' }),
       ['<C-k>'] = mapping(mapping.select_prev_item({ behavior = types.cmp.SelectBehavior.Insert }), { 'i', 'c' }),
       ['<CR>'] = mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     }),
-
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
       { name = 'nvim_lsp_signature_help' },
       { name = 'vsnip' },
       { name = 'path' },
       { name = 'nvim_lua' },
+      { name = 'emoji' },
     }, {
       { name = 'buffer' },
     }),
   })
 end
 
-return config
+return M
