@@ -4,7 +4,7 @@ return function()
   require('lspconfig').yamlls.setup(utils.override_with({
     settings = {
       yaml = {
-        validate = { enable = false },
+        validate = false,
         keyOrdering = false,
         schemas = require('schemastore').yaml.schemas(),
       },
