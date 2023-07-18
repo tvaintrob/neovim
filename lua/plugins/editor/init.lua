@@ -34,13 +34,32 @@ return {
   },
 
   {
+    'zbirenbaum/copilot.lua',
+    config = function()
+      require('copilot').setup({
+        suggestion = { enabled = false },
+        panel = { enabled = false },
+      })
+    end,
+  },
+
+  {
     'hrsh7th/nvim-cmp',
     version = false,
     event = 'InsertEnter',
     config = nvim_cmp.config,
     dependencies = {
       { 'hrsh7th/vim-vsnip' },
-      { 'onsails/lspkind-nvim' },
+      {
+        'onsails/lspkind-nvim',
+        config = function()
+          require('lspkind').init({
+            symbol_map = {
+              Copilot = '',
+            },
+          })
+        end,
+      },
       { 'hrsh7th/cmp-path' },
       { 'hrsh7th/cmp-vsnip' },
       { 'hrsh7th/cmp-emoji' },
@@ -48,6 +67,13 @@ return {
       { 'hrsh7th/cmp-nvim-lsp' },
       { 'hrsh7th/cmp-nvim-lua' },
       { 'hrsh7th/cmp-nvim-lsp-signature-help' },
+      {
+        'zbirenbaum/copilot-cmp',
+        config = function()
+          require('copilot_cmp').setup()
+          vim.api.nvim_set_hl(0, 'CmpItemKindCopilot', { fg = '#6CC644' })
+        end,
+      },
     },
   },
 }

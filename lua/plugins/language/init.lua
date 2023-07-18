@@ -82,6 +82,7 @@ return {
             'dockerfile-language-server',
             'typescript-language-server',
             'tailwindcss-language-server',
+            'terraform-ls',
 
             -- ensure formatters installed
             'buf',

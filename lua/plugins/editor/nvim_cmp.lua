@@ -58,12 +58,13 @@ function M.config()
       ['<CR>'] = mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     }),
     sources = cmp.config.sources({
-      { name = 'nvim_lsp' },
-      { name = 'nvim_lsp_signature_help' },
-      { name = 'vsnip' },
-      { name = 'path' },
-      { name = 'nvim_lua' },
-      { name = 'emoji' },
+      { name = 'copilot', group_index = 1 },
+      { name = 'nvim_lsp', group_index = 2 },
+      { name = 'nvim_lsp_signature_help', group_index = 2 },
+      { name = 'path', group_index = 2 },
+      { name = 'nvim_lua', group_index = 2 },
+      { name = 'vsnip', group_index = 3 },
+      { name = 'emoji', group_index = 3 },
     }, {
       { name = 'buffer' },
     }),
