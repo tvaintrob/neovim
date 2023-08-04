@@ -10,9 +10,9 @@ return {
       dir = 'git_dir',
       direction = 'float',
       float_opts = { border = 'single' },
-      on_open = function()
+      on_open = function(term)
         vim.cmd.startinsert()
-        vim.keymap.set('n', 'q', '<cmd>close<cr>', { noremap = true, silent = true, buffer = true })
+        vim.keymap.set('n', 'q', term.toggle, { noremap = true, silent = true, buffer = true })
       end,
     })
 
