@@ -1,12 +1,15 @@
 -- tvaintrob's neovim config
 
--- disable netrw
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+-- change the <leader> key to ,
+vim.g.mapleader = ','
+
+-- load all plugins and configurations
+require('lazy_nvim').setup('plugins')
 
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.hidden = true
+vim.opt.undofile = true
 vim.opt.cursorline = true
 vim.opt.termguicolors = true
 vim.opt.splitright = true
@@ -31,33 +34,27 @@ vim.opt.expandtab = true
 -- resize windowns automatically only horizontaly
 vim.opt.eadirection = 'hor'
 
--- change the <leader> key to ,
-vim.g.mapleader = ','
+-- split movements
+vim.keymap.set('n', '<c-h>', '<c-w>h', { silent = true, noremap = true })
+vim.keymap.set('n', '<c-j>', '<c-w>j', { silent = true, noremap = true })
+vim.keymap.set('n', '<c-k>', '<c-w>k', { silent = true, noremap = true })
+vim.keymap.set('n', '<c-l>', '<c-w>l', { silent = true, noremap = true })
+vim.keymap.set('t', '<c-h>', '<c-\\><c-n><c-w>h', { silent = true, noremap = true })
+vim.keymap.set('t', '<c-j>', '<c-\\><c-n><c-w>j', { silent = true, noremap = true })
+vim.keymap.set('t', '<c-k>', '<c-\\><c-n><c-w>k', { silent = true, noremap = true })
+vim.keymap.set('t', '<c-l>', '<c-\\><c-n><c-w>l', { silent = true, noremap = true })
 
-require('lazy_nvim').setup_lazy({
-  { 'rose-pine/neovim', name = 'rose-pine' },
-  {
-    'nvim-treesitter/nvim-treesitter',
-    build = ':TSUpdate',
-    dependencies = {
-      { 'windwp/nvim-ts-autotag' },
-      { 'RRethy/nvim-treesitter-endwise' },
-      { 'joosepalviste/nvim-ts-context-commentstring' },
-      { 'nvim-treesitter/nvim-treesitter-context', opts = { max_lines = -1 } },
-    },
-  },
-  {
-    'nvim-telescope/telescope.nvim',
-    tag = '0.1.2',
-    dependencies = { 'nvim-lua/plenary.nvim', { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' } },
-  },
-  {
-    'nvim-neo-tree/neo-tree.nvim',
-    branch = 'v3.x',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'nvim-tree/nvim-web-devicons',
-      'MunifTanjim/nui.nvim',
-    },
-  },
-})
+-- yank to end of line
+vim.keymap.set('n', 'Y', 'y$', { noremap = true })
+
+-- better indenting
+vim.keymap.set('v', '<', '<gv', { silent = true, noremap = true })
+vim.keymap.set('v', '>', '>gv', { silent = true, noremap = true })
+
+-- move lines up and down
+vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { silent = true, noremap = true })
+vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { silent = true, noremap = true })
+
+-- disable command history
+vim.keymap.set('n', 'Q', '<nop>', { noremap = true })
+vim.keymap.set('n', 'q:', '<nop>', { noremap = true })

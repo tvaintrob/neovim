@@ -2,7 +2,7 @@
 
 local M = {}
 
-function M.setup_lazy(plugins)
+function M.setup(plugins)
   -- ensure lazy is installed
   local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
   if not vim.loop.fs_stat(lazypath) then
