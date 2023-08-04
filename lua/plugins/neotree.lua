@@ -1,5 +1,6 @@
 return {
   'nvim-neo-tree/neo-tree.nvim',
+  lazy = false,
   branch = 'v3.x',
   dependencies = {
     { 'nvim-lua/plenary.nvim' },
@@ -30,6 +31,6 @@ return {
       },
     })
 
-    vim.keymap.set('n', '-', '<cmd>Neotree filesystem current reveal<cr>')
+    vim.keymap.set('n', '-', '<cmd>Neotree filesystem float reveal<cr>')
   end,
 }

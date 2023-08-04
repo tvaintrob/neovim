@@ -1,0 +1,75 @@
+local surface_opts = {
+  border = 'solid',
+  winhighlight = 'Float:RosePineSurface,Normal:RosePineSurface,FloatBorder:RosePineSurface,CursorLine:Visual,Search:None',
+}
+
+return {
+  'VonHeikemen/lsp-zero.nvim',
+  branch = 'v2.x',
+  dependencies = {
+    { 'neovim/nvim-lspconfig' },
+    { 'folke/neodev.nvim' },
+    { 'hrsh7th/nvim-cmp' },
+    { 'hrsh7th/cmp-nvim-lsp' },
+    { 'hrsh7th/cmp-nvim-lsp-signature-help' },
+    { 'hrsh7th/cmp-buffer' },
+    { 'hrsh7th/cmp-path' },
+    { 'L3MON4D3/LuaSnip' },
+    { 'saadparwaiz1/cmp_luasnip' },
+    { 'onsails/lspkind.nvim' },
+  },
+  config = function()
+    require('neodev').setup({})
+
+    local cmp = require('cmp')
+    local cmptypes = require('cmp.types')
+    local lspzero = require('lsp-zero')
+    local lspconfig = require('lspconfig')
+
+    lspconfig.util.default_config.handlers = {
+      ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, surface_opts),
+      ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, surface_opts),
+    }
+
+    local lsp = lspzero.preset('recommended')
+
+    lsp.on_attach(function(_, bufnr)
+      lsp.default_keymaps({ buffer = bufnr })
+      vim.keymap.set('n', '<leader>ac', vim.lsp.buf.code_action, { buffer = true })
+      vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { buffer = true })
+    end)
+
+    lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
+
+    lsp.setup()
+    cmp.setup({
+      sources = {
+        { name = 'nvim_lsp' },
+        { name = 'nvim_lsp_signature_help' },
+        { name = 'nvim_lua' },
+        { name = 'path' },
+        { name = 'buffer' },
+        { name = 'luasnip' },
+      },
+      mapping = {
+        ['<CR>'] = cmp.mapping.confirm({ select = true }),
+        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<C-j>'] = cmp.mapping.select_next_item({ behavior = cmptypes.cmp.SelectBehavior.Select }),
+        ['<C-k>'] = cmp.mapping.select_prev_item({ behavior = cmptypes.cmp.SelectBehavior.Select }),
+      },
+      window = {
+        completion = cmp.config.window.bordered(surface_opts),
+        documentation = cmp.config.window.bordered(surface_opts),
+      },
+      formatting = {
+        fields = { 'abbr', 'kind', 'menu' },
+        format = require('lspkind').cmp_format({
+          mode = 'symbol_text', -- show only symbol annotations
+          preset = 'codicons',
+          maxwidth = 50, -- prevent the popup from showing more than provided characters
+          ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead
+        }),
+      },
+    })
+  end,
+}

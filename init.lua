@@ -3,6 +3,10 @@
 -- change the <leader> key to ,
 vim.g.mapleader = ','
 
+-- disable netrw
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- load all plugins and configurations
 require('lazy_nvim').setup('plugins')
 
