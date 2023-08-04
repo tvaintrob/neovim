@@ -1,7 +1,11 @@
 {
   "lazy.nvim": { "branch": "main", "commit": "dac844ed617dda4f9ec85eb88e9629ad2add5e05" },
+  "lualine-lsp-progress": { "branch": "master", "commit": "56842d097245a08d77912edf5f2a69ba29f275d7" },
+  "lualine.nvim": { "branch": "master", "commit": "45e27ca739c7be6c49e5496d14fcf45a303c3a63" },
   "neo-tree.nvim": { "branch": "v3.x", "commit": "7951701fd21291ac473ea92d3fd57ec5c8bf10bb" },
   "nui.nvim": { "branch": "main", "commit": "9e3916e784660f55f47daa6f26053ad044db5d6a" },
+  "nvim-colorizer.lua": { "branch": "master", "commit": "dde3084106a70b9a79d48f426f6d6fec6fd203f7" },
+  "nvim-navic": { "branch": "master", "commit": "9c89730da6a05acfeb6a197e212dfadf5aa60ca0" },
   "nvim-treesitter": { "branch": "master", "commit": "6c93c86272633937090806fedb2a20fe11025876" },
   "nvim-treesitter-context": { "branch": "master", "commit": "3d4ab25056dcaf6dd11ebacf1da8525c8df6550f" },
   "nvim-treesitter-endwise": { "branch": "master", "commit": "9298b3ac8fd6d0d8f9e321194c6d3fd37e417cf9" },
