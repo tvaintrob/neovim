@@ -1,5 +1,9 @@
 -- tvaintrob's neovim config
 
+-- disable netrw
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.hidden = true
@@ -33,8 +37,27 @@ vim.g.mapleader = ','
 require('lazy_nvim').setup_lazy({
   { 'rose-pine/neovim', name = 'rose-pine' },
   {
+    'nvim-treesitter/nvim-treesitter',
+    build = ':TSUpdate',
+    dependencies = {
+      { 'windwp/nvim-ts-autotag' },
+      { 'RRethy/nvim-treesitter-endwise' },
+      { 'joosepalviste/nvim-ts-context-commentstring' },
+      { 'nvim-treesitter/nvim-treesitter-context', opts = { max_lines = -1 } },
+    },
+  },
+  {
     'nvim-telescope/telescope.nvim',
     tag = '0.1.2',
     dependencies = { 'nvim-lua/plenary.nvim', { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' } },
+  },
+  {
+    'nvim-neo-tree/neo-tree.nvim',
+    branch = 'v3.x',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-tree/nvim-web-devicons',
+      'MunifTanjim/nui.nvim',
+    },
   },
 })
