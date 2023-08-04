@@ -50,6 +50,18 @@ return {
   },
 
   {
+    'someone-stole-my-name/yaml-companion.nvim',
+    dependencies = {
+      { 'neovim/nvim-lspconfig' },
+      { 'nvim-lua/plenary.nvim' },
+      { 'nvim-telescope/telescope.nvim' },
+    },
+    config = function()
+      require('telescope').load_extension('yaml_schema')
+    end,
+  },
+
+  {
     'jose-elias-alvarez/null-ls.nvim',
     event = { 'BufReadPost', 'BufNewFile' },
     config = null_ls.config,
