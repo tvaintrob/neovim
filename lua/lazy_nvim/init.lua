@@ -2,7 +2,8 @@
 
 local M = {}
 
-function M.setup_lazy()
+function M.setup_lazy(plugins)
+  -- ensure lazy is installed
   local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
   if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
@@ -15,6 +16,9 @@ function M.setup_lazy()
     })
   end
   vim.opt.rtp:prepend(lazypath)
+
+  -- actually setup lazy
+  require('lazy').setup(plugins)
 end
 
 return M

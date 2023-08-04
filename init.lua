@@ -1,10 +1,5 @@
 -- tvaintrob's neovim config
 
-require('lazy_nvim').setup_lazy()
-
--- TODO: this is temporary
-vim.cmd.colorscheme('habamax')
-
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.hidden = true
@@ -31,3 +26,15 @@ vim.opt.expandtab = true
 
 -- resize windowns automatically only horizontaly
 vim.opt.eadirection = 'hor'
+
+-- change the <leader> key to ,
+vim.g.mapleader = ','
+
+require('lazy_nvim').setup_lazy({
+  { 'rose-pine/neovim', name = 'rose-pine' },
+  {
+    'nvim-telescope/telescope.nvim',
+    tag = '0.1.2',
+    dependencies = { 'nvim-lua/plenary.nvim', { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' } },
+  },
+})
