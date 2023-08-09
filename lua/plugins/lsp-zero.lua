@@ -1,6 +1,6 @@
 local surface_opts = {
   border = 'solid',
-  winhighlight = 'Float:RosePineSurface,Normal:RosePineSurface,FloatBorder:RosePineSurface,CursorLine:Visual,Search:None',
+  winhighlight = 'Float:Pmenu,Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None',
 }
 
 return {
@@ -17,6 +17,7 @@ return {
     { 'L3MON4D3/LuaSnip' },
     { 'saadparwaiz1/cmp_luasnip' },
     { 'onsails/lspkind.nvim' },
+    { 'b0o/schemastore.nvim' },
   },
   config = function()
     require('neodev').setup({})
@@ -37,9 +38,20 @@ return {
       lsp.default_keymaps({ buffer = bufnr })
       vim.keymap.set('n', '<leader>ac', vim.lsp.buf.code_action, { buffer = true })
       vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { buffer = true })
+      vim.keymap.set('n', '<leader>d', function()
+        vim.diagnostic.open_float({ scope = 'line', border = 'single' })
+      end, { buffer = true })
     end)
 
     lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
+    lspconfig.jsonls.setup({
+      settings = {
+        json = {
+          schemas = require('schemastore').json.schemas(),
+          validate = { enable = true },
+        },
+      },
+    })
 
     lsp.setup()
     cmp.setup({
