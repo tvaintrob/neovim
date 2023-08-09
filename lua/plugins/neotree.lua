@@ -16,12 +16,12 @@ return {
     vim.fn.sign_define('DiagnosticSignHint', { text = '󰌵', texthl = 'DiagnosticSignHint' })
 
     neotree.setup({
+      popup_border_style = 'single',
       close_if_last_window = true,
       default_component_configs = { indent = { padding = 1, indent_size = 4 } },
       window = { position = 'float' },
       filesystem = {
         follow_current_file = { enabled = true },
-        hijack_netrw_behavior = 'open_default',
         window = {
           mappings = {
             ['^'] = 'navigate_up',

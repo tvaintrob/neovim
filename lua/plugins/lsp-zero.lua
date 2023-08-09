@@ -54,6 +54,7 @@ return {
     })
 
     lsp.setup()
+
     cmp.setup({
       sources = {
         { name = 'nvim_lsp' },
