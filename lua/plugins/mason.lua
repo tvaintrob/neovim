@@ -42,6 +42,7 @@ return {
           -- ensure linters installed
           'hadolint',
           'golangci-lint',
+          'ruff',
         },
       },
     },
