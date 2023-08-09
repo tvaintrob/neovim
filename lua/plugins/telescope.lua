@@ -8,10 +8,12 @@ return {
   config = function()
     local telescope = require('telescope')
     local actions = require('telescope.actions')
-    local builtin = require('telescope.builtin')
+    -- local builtin = require('telescope.builtin')
 
     telescope.setup({
       defaults = {
+        prompt_prefix = '🔎  ',
+        selection_caret = '❯ ',
         mappings = {
           i = {
             ['<esc>'] = actions.close,
@@ -22,7 +24,7 @@ return {
       },
       extensions = {
         fzf = {
-          fuzzy = true,
+          fuzzy = false,
           override_file_sorter = true,
           override_generic_sorter = true,
           case_mode = 'ignore_case',
@@ -32,9 +34,5 @@ return {
 
     -- load telescope extensions
     telescope.load_extension('fzf')
-
-    -- setup telescope keymaps
-    vim.keymap.set('n', '<c-p>', builtin.find_files)
-    vim.keymap.set('n', '<leader>pf', builtin.live_grep)
   end,
 }
