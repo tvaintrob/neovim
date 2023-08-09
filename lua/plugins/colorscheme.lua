@@ -13,11 +13,12 @@ return {
         integrations = {
           mason = true,
           neotree = true,
+          illuminate = true,
+          treesitter_context = true,
           telescope = {
             enabled = true,
             style = 'nvchad',
           },
-          treesitter_context = true,
         },
       })
 
