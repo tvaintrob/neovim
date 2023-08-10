@@ -6,6 +6,7 @@ local surface_opts = {
 return {
   'VonHeikemen/lsp-zero.nvim',
   branch = 'v2.x',
+  event = { 'BufReadPost', 'BufNewFile' },
   dependencies = {
     { 'neovim/nvim-lspconfig' },
     { 'folke/neodev.nvim' },
@@ -28,15 +29,20 @@ return {
     local lspconfig = require('lspconfig')
 
     lspconfig.util.default_config.handlers = {
-      ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, surface_opts),
-      ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, surface_opts),
+      ['textDocument/hover'] = vim.lsp.with(
+        vim.lsp.handlers.hover,
+        { border = 'single', winhighlight = surface_opts.winhighlight }
+      ),
+      ['textDocument/signatureHelp'] = vim.lsp.with(
+        vim.lsp.handlers.signature_help,
+        { border = 'single', winhighlight = surface_opts.winhighlight }
+      ),
     }
 
     local lsp = lspzero.preset('recommended')
 
     lsp.on_attach(function(_, bufnr)
       lsp.default_keymaps({ buffer = bufnr })
-      vim.keymap.set('n', '<leader>ac', vim.lsp.buf.code_action, { buffer = true })
       vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { buffer = true })
       vim.keymap.set('n', '<leader>d', function()
         vim.diagnostic.open_float({ scope = 'line', border = 'single' })
@@ -49,6 +55,15 @@ return {
         json = {
           schemas = require('schemastore').json.schemas(),
           validate = { enable = true },
+        },
+      },
+    })
+
+    lspconfig.yamlls.setup({
+      settings = {
+        yaml = {
+          schemaStore = { enable = false, url = '' },
+          schemas = vim.tbl_deep_extend('force', { kubernetes = '*.yaml' }, require('schemastore').yaml.schemas()),
         },
       },
     })

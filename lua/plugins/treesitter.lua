@@ -1,6 +1,7 @@
 return {
   'nvim-treesitter/nvim-treesitter',
   build = ':TSUpdate',
+  event = { 'BufReadPost', 'BufNewFile' },
   dependencies = {
     { 'windwp/nvim-ts-autotag' },
     { 'RRethy/nvim-treesitter-endwise' },
