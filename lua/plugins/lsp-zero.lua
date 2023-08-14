@@ -21,7 +21,12 @@ return {
     { 'b0o/schemastore.nvim' },
   },
   config = function()
-    require('neodev').setup({})
+    require('neodev').setup({
+      override = function(root_dir, library)
+        library.enabled = true
+        library.plugins = true
+      end,
+    })
 
     local cmp = require('cmp')
     local cmptypes = require('cmp.types')
