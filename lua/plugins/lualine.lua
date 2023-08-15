@@ -1,5 +1,3 @@
-local M = {}
-
 local function lsp_server_names()
   local servers = vim.lsp.get_active_clients({ bufnr = 0 })
   local names = ''
@@ -11,18 +9,23 @@ local function lsp_server_names()
   return names
 end
 
-function M.config()
-  require('lualine').setup({
+return {
+  'nvim-lualine/lualine.nvim',
+  event = { 'BufReadPost', 'BufNewFile' },
+  dependencies = {
+    { 'nvim-tree/nvim-web-devicons' },
+    { 'arkav/lualine-lsp-progress' },
+    { 'SmiteshP/nvim-navic', opts = { lsp = { auto_attach = true } } },
+  },
+  opts = {
     options = {
       theme = 'auto',
       section_separators = '',
       component_separators = '',
     },
     sections = {
-      lualine_c = { 'filename', require('nvim-navic').get_location, 'lsp_progress' },
+      lualine_c = { 'filename', 'navic', 'lsp_progress' },
       lualine_x = { lsp_server_names, 'encoding', 'fileformat', 'filetype' },
     },
-  })
-end
-
-return M
+  },
+}

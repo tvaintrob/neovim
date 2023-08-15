@@ -1,1 +1,2 @@
-set spell
+" turn on spell checking, only for the current buffer
+setlocal spell
