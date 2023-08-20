@@ -14,6 +14,7 @@ return {
           'gopls',
           'pyright',
           'css-lsp',
+          'helm-ls',
           'html-lsp',
           'json-lsp',
           'eslint-lsp',

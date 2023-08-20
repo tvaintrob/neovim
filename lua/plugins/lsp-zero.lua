@@ -68,11 +68,12 @@ return {
       settings = {
         yaml = {
           schemaStore = { enable = false, url = '' },
-          schemas = vim.tbl_deep_extend('force', { kubernetes = '*.yaml' }, require('schemastore').yaml.schemas()),
+          schemas = require('schemastore').yaml.schemas(),
         },
       },
     })
 
+    lsp.skip_server_setup({ 'rust_analyzer' })
     lsp.setup()
 
     cmp.setup({
