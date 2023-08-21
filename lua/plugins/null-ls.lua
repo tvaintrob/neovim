@@ -19,7 +19,6 @@ return {
       sources = {
         null_ls.builtins.diagnostics.golangci_lint,
         null_ls.builtins.diagnostics.ruff,
-        null_ls.builtins.formatting.rustfmt,
         null_ls.builtins.formatting.shfmt,
         null_ls.builtins.formatting.taplo,
         null_ls.builtins.formatting.stylua,

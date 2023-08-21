@@ -36,7 +36,6 @@ return {
           'shfmt',
           'stylua',
           'gofumpt',
-          'rustfmt',
           'prettier',
           'goimports',
           'prettierd',
