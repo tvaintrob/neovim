@@ -3,6 +3,7 @@ return {
     'f-person/git-blame.nvim',
     event = { 'BufReadPost', 'BufNewFile' },
     config = function()
+      vim.g.gitblame_ignored_filetypes = { 'toggleterm' }
       vim.g.gitblame_date_format = '%r'
     end,
   },
