@@ -4,6 +4,7 @@ return {
   event = { 'BufReadPost', 'BufNewFile' },
   opts = {
     indent = { char = '▏' },
+    scope = { enabled = false },
     exclude = {
       filetypes = {
         'help',
