@@ -29,6 +29,7 @@ return {
         null_ls.builtins.formatting.buf,
         null_ls.builtins.formatting.isort,
         null_ls.builtins.formatting.black.with({ args = { '-' } }),
+        null_ls.builtins.formatting.csharpier,
       },
       on_attach = function()
         vim.keymap.set('n', '<leader>f', null_ls_format, { silent = true, noremap = true })

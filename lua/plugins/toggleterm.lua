@@ -1,7 +1,7 @@
 return {
   'akinsho/toggleterm.nvim',
   version = '*',
-  event = { 'BufReadPost', 'BufNewFile' },
+  event = { 'VeryLazy' },
   config = function()
     require('toggleterm').setup({ size = 20 })
 

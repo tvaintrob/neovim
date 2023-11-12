@@ -6,7 +6,6 @@ return {
     { 'windwp/nvim-ts-autotag' },
     { 'RRethy/nvim-treesitter-endwise' },
     { 'joosepalviste/nvim-ts-context-commentstring' },
-    { 'nvim-treesitter/nvim-treesitter-context', opts = { max_lines = -1 } },
   },
 
   config = function()
