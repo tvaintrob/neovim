@@ -19,7 +19,6 @@ return {
       autotag = { enable = true, enable_close_on_slash = false },
       endwise = { enable = true },
       highlight = { enable = true },
-      context_commentstring = { enable = true },
     })
   end,
 }

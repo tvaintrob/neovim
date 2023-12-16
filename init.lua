@@ -23,6 +23,7 @@ vim.opt.hlsearch = false
 vim.opt.swapfile = false
 vim.opt.scrolloff = 4
 vim.opt.foldlevel = 10
+vim.opt.modeline = true
 vim.opt.mouse = 'a'
 vim.opt.signcolumn = 'yes'
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
