@@ -12,6 +12,7 @@ return {
         ensure_installed = {
           -- ensure lsp servers installed
           'gopls',
+          'templ',
           'pyright',
           'css-lsp',
           'helm-ls',

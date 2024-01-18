@@ -70,3 +70,9 @@ vim.api.nvim_create_autocmd('CursorHold', {
   command = 'checktime',
   group = vim.api.nvim_create_augroup('AutoRead', { clear = true }),
 })
+
+vim.filetype.add({
+  extension = {
+    templ = 'templ',
+  },
+})
