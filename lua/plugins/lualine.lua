@@ -14,8 +14,43 @@ return {
   event = { 'BufReadPost', 'BufNewFile' },
   dependencies = {
     { 'nvim-tree/nvim-web-devicons' },
-    { 'arkav/lualine-lsp-progress' },
-    { 'SmiteshP/nvim-navic', opts = { lsp = { auto_attach = true } } },
+    {
+      'SmiteshP/nvim-navic',
+      config = function()
+        require('nvim-navic').setup({
+          highlight = true,
+          icons = {
+            File = ' ',
+            Module = ' ',
+            Namespace = ' ',
+            Package = ' ',
+            Class = ' ',
+            Method = ' ',
+            Property = ' ',
+            Field = ' ',
+            Constructor = ' ',
+            Enum = ' ',
+            Interface = ' ',
+            Function = ' ',
+            Variable = ' ',
+            Constant = ' ',
+            String = ' ',
+            Number = ' ',
+            Boolean = ' ',
+            Array = ' ',
+            Object = ' ',
+            Key = ' ',
+            Null = ' ',
+            EnumMember = ' ',
+            Struct = ' ',
+            Event = ' ',
+            Operator = ' ',
+            TypeParameter = ' ',
+          },
+          lsp = { auto_attach = true },
+        })
+      end,
+    },
   },
   opts = {
     options = {
@@ -24,7 +59,7 @@ return {
       component_separators = '',
     },
     sections = {
-      lualine_c = { 'filename', 'navic', 'lsp_progress' },
+      lualine_c = { 'filename', 'navic' },
       lualine_x = { lsp_server_names, 'encoding', 'fileformat', 'filetype' },
     },
   },

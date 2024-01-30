@@ -94,6 +94,8 @@ return {
       },
     })
 
+    lspconfig.htmx.setup({ filetypes = { 'html', 'javascriptreact', 'typescriptreact', 'templ' } })
+
     lspconfig.tsserver.setup({
       commands = {
         OrganizeImports = {

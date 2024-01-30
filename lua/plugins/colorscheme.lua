@@ -19,6 +19,10 @@ return {
             enabled = true,
             style = 'nvchad',
           },
+          navic = {
+            enabled = true,
+            custom_bg = 'NONE', -- "lualine" will set background to mantle
+          },
         },
       })
 

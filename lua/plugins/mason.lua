@@ -17,6 +17,7 @@ return {
           'css-lsp',
           'helm-ls',
           'html-lsp',
+          'htmx-lsp',
           'json-lsp',
           'eslint-lsp',
           'rust-analyzer',
