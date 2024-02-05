@@ -173,6 +173,13 @@ return {
     lsp.skip_server_setup({ 'rust_analyzer' })
     lsp.setup()
 
+    local has_words_before = function()
+      local cursor = vim.api.nvim_win_get_cursor(0)
+      return (vim.api.nvim_buf_get_lines(0, cursor[1] - 1, cursor[1], true)[1] or '')
+        :sub(cursor[2], cursor[2])
+        :match('%s')
+    end
+
     cmp.setup({
       sources = {
         { name = 'nvim_lsp' },
@@ -187,6 +194,14 @@ return {
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<C-j>'] = cmp.mapping.select_next_item({ behavior = cmptypes.cmp.SelectBehavior.Select }),
         ['<C-k>'] = cmp.mapping.select_prev_item({ behavior = cmptypes.cmp.SelectBehavior.Select }),
+        ['<Tab>'] = cmp.mapping(function(fallback)
+          local suggestion = require('copilot.suggestion')
+          if suggestion.is_visible() then
+            suggestion.accept()
+          else
+            fallback()
+          end
+        end, { 'i' }),
       },
       window = {
         completion = cmp.config.window.bordered(surface_opts),

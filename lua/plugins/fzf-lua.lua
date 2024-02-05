@@ -45,7 +45,7 @@ return {
     })
 
     vim.keymap.set('n', '<c-p>', fzf.files)
-    vim.keymap.set('n', '<leader>pf', fzf.live_grep)
+    vim.keymap.set('n', '<leader>pf', fzf.live_grep_native)
 
     vim.api.nvim_create_user_command('Help', fzf.help_tags, {})
   end,
