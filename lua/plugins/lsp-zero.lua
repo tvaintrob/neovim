@@ -173,13 +173,6 @@ return {
     lsp.skip_server_setup({ 'rust_analyzer' })
     lsp.setup()
 
-    local has_words_before = function()
-      local cursor = vim.api.nvim_win_get_cursor(0)
-      return (vim.api.nvim_buf_get_lines(0, cursor[1] - 1, cursor[1], true)[1] or '')
-        :sub(cursor[2], cursor[2])
-        :match('%s')
-    end
-
     cmp.setup({
       sources = {
         { name = 'nvim_lsp' },
@@ -210,10 +203,10 @@ return {
       formatting = {
         fields = { 'abbr', 'kind', 'menu' },
         format = require('lspkind').cmp_format({
-          mode = 'symbol_text', -- show only symbol annotations
+          mode = 'symbol_text',
           preset = 'codicons',
-          maxwidth = 50, -- prevent the popup from showing more than provided characters
-          ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead
+          maxwidth = 50,
+          ellipsis_char = '...',
         }),
       },
     })
