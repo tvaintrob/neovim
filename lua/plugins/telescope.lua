@@ -4,6 +4,8 @@ return {
   cmd = 'Telescope',
   dependencies = {
     { 'nvim-lua/plenary.nvim' },
+    { 'nvim-lua/popup.nvim' },
+    { 'edolphin-ydf/goimpl.nvim' },
     { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
   },
   config = function()
@@ -35,5 +37,6 @@ return {
 
     -- load telescope extensions
     telescope.load_extension('fzf')
+    telescope.load_extension('goimpl')
   end,
 }
