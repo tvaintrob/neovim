@@ -30,6 +30,7 @@ return {
           'typescript-language-server',
           'tailwindcss-language-server',
           'terraform-ls',
+          'ruff-lsp',
 
           -- ensure formatters installed
           'buf',

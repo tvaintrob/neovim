@@ -26,6 +26,8 @@ vim.opt.foldlevel = 10
 vim.opt.modeline = true
 vim.opt.mouse = 'a'
 vim.opt.signcolumn = 'yes'
+vim.opt.smartcase = true
+vim.opt.ignorecase = true
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 
 -- default tab settings,
