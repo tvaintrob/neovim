@@ -3,8 +3,12 @@ return {
     'f-person/git-blame.nvim',
     event = { 'BufReadPost', 'BufNewFile' },
     config = function()
-      vim.g.gitblame_ignored_filetypes = { 'toggleterm' }
-      vim.g.gitblame_date_format = '%r'
+      require('gitblame').setup({
+        enabled = true,
+        date_format = '%r',
+        highlight_group = 'CursorLineFold',
+        ignored_filetypes = { 'toggleterm' },
+      })
     end,
   },
 
