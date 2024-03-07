@@ -14,6 +14,8 @@ return {
   event = { 'BufReadPost', 'BufNewFile' },
   dependencies = {
     { 'nvim-tree/nvim-web-devicons' },
+    { 'lunarvim/darkplus.nvim' },
+    { 'AndreM222/copilot-lualine' },
     {
       'SmiteshP/nvim-navic',
       config = function()
@@ -54,13 +56,13 @@ return {
   },
   opts = {
     options = {
-      theme = 'auto',
+      theme = 'darkplus',
       section_separators = '',
       component_separators = '',
     },
     sections = {
       lualine_c = { 'filename', 'navic' },
-      lualine_x = { lsp_server_names, 'encoding', 'fileformat', 'filetype' },
+      lualine_x = { lsp_server_names, 'encoding', { 'copilot', show_colors = true, show_loading = true }, 'filetype' },
     },
   },
 }

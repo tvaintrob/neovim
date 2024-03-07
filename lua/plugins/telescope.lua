@@ -1,7 +1,7 @@
 return {
   'nvim-telescope/telescope.nvim',
-  tag = '0.1.2',
-  cmd = 'Telescope',
+  branch = '0.1.x',
+  event = 'VimEnter',
   dependencies = {
     { 'nvim-lua/plenary.nvim' },
     { 'nvim-lua/popup.nvim' },
@@ -15,7 +15,7 @@ return {
 
     telescope.setup({
       defaults = {
-        prompt_prefix = '🔎  ',
+        prompt_prefix = '🔎 ',
         selection_caret = '❯ ',
         mappings = {
           i = {
@@ -27,10 +27,9 @@ return {
       },
       extensions = {
         fzf = {
-          fuzzy = false,
+          fuzzy = true,
           override_file_sorter = true,
           override_generic_sorter = true,
-          case_mode = 'ignore_case',
         },
       },
     })
@@ -38,5 +37,11 @@ return {
     -- load telescope extensions
     telescope.load_extension('fzf')
     telescope.load_extension('goimpl')
+
+    -- keymaps
+    vim.keymap.set('n', '<c-p>', '<cmd>Telescope find_files<cr>')
+    vim.keymap.set('n', '<leader>pf', '<cmd>Telescope live_grep<cr>')
+    vim.keymap.set('n', '<leader>ps', '<cmd>Telescope lsp_workspace_symbols<cr>')
+    vim.keymap.set('n', '<leader>d', '<cmd>Telescope diagnostics<cr>')
   end,
 }
