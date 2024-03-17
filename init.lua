@@ -1,6 +1,6 @@
 -- tvaintrob's neovim config
 
--- change the <leader> key to ,
+-- hange the <leader> key to ,
 vim.g.mapleader = ','
 
 -- disable netrw

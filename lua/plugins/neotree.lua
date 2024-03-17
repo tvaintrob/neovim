@@ -3,6 +3,7 @@ return {
   lazy = false,
   branch = 'v3.x',
   dependencies = {
+    { 'Mofiqul/vscode.nvim' },
     { 'nvim-lua/plenary.nvim' },
     { 'nvim-tree/nvim-web-devicons' },
     { 'MunifTanjim/nui.nvim' },
@@ -14,6 +15,14 @@ return {
     vim.fn.sign_define('DiagnosticSignWarn', { text = ' ', texthl = 'DiagnosticSignWarn' })
     vim.fn.sign_define('DiagnosticSignInfo', { text = ' ', texthl = 'DiagnosticSignInfo' })
     vim.fn.sign_define('DiagnosticSignHint', { text = '󰌵', texthl = 'DiagnosticSignHint' })
+
+    -- link nvim-tree to neotree
+    vim.api.nvim_set_hl(0, 'NeoTreeDirectoryIcon', { link = 'NvimTreeFolderIcon' })
+    vim.api.nvim_set_hl(0, 'NeoTreeDirectoryName', { link = 'NvimTreeFolderName' })
+    vim.api.nvim_set_hl(0, 'NeoTreeSymbolicLinkTarget', { link = 'NvimTreeSymlink' })
+    vim.api.nvim_set_hl(0, 'NeoTreeRootName', { link = 'NvimTreeRootFolder' })
+    vim.api.nvim_set_hl(0, 'NeoTreeDirectoryName', { link = 'NvimTreeOpenedFolderName' })
+    vim.api.nvim_set_hl(0, 'NeoTreeFileNameOpened', { link = 'NvimTreeOpenedFile' })
 
     neotree.setup({
       popup_border_style = 'single',

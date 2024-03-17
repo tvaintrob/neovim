@@ -3,19 +3,12 @@ return {
   event = 'VimEnter',
   dependencies = {
     { 'nvim-tree/nvim-web-devicons' },
-    { 'ibhagwan/fzf-lua' },
+    { 'nvim-telescope/telescope.nvim' },
   },
   config = function()
-    require('dashboard').setup({
-      config = {
-        project = {
-          enable = true,
-          limit = 8,
-          action = function(path)
-            require('fzf-lua').files({ cwd = path })
-          end,
-        },
-      },
-    })
+    vim.api.nvim_set_hl(0, 'DashboardMruTitle', { link = 'DashboardHeader' })
+    vim.api.nvim_set_hl(0, 'DashboardProjectTitle', { link = 'DashboardHeader' })
+
+    require('dashboard').setup({})
   end,
 }

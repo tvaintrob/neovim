@@ -1,6 +1,7 @@
 return {
   {
     'Mofiqul/vscode.nvim',
+    priority = 1000,
     config = function()
       require('vscode').setup({
         italic_comments = true,
@@ -10,14 +11,6 @@ return {
 
       vim.api.nvim_set_hl(0, 'CopilotAnnotation', { link = 'CursorLineFold' })
       vim.api.nvim_set_hl(0, 'CopilotSuggestion', { link = 'CursorLineFold' })
-
-      -- link nvim-tree to neotree
-      vim.api.nvim_set_hl(0, 'NeoTreeDirectoryIcon', { link = 'NvimTreeFolderIcon' })
-      vim.api.nvim_set_hl(0, 'NeoTreeDirectoryName', { link = 'NvimTreeFolderName' })
-      vim.api.nvim_set_hl(0, 'NeoTreeSymbolicLinkTarget', { link = 'NvimTreeSymlink' })
-      vim.api.nvim_set_hl(0, 'NeoTreeRootName', { link = 'NvimTreeRootFolder' })
-      vim.api.nvim_set_hl(0, 'NeoTreeDirectoryName', { link = 'NvimTreeOpenedFolderName' })
-      vim.api.nvim_set_hl(0, 'NeoTreeFileNameOpened', { link = 'NvimTreeOpenedFile' })
     end,
   },
 

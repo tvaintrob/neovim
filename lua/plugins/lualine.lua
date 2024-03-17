@@ -54,15 +54,17 @@ return {
       end,
     },
   },
-  opts = {
-    options = {
-      theme = 'darkplus',
-      section_separators = '',
-      component_separators = '',
-    },
-    sections = {
-      lualine_c = { 'filename', 'navic' },
-      lualine_x = { lsp_server_names, 'encoding', { 'copilot', show_colors = true, show_loading = true }, 'filetype' },
-    },
-  },
+  config = function()
+    require('lualine').setup({
+      options = {
+        theme = 'darkplus',
+        section_separators = '',
+        component_separators = '',
+      },
+      sections = {
+        lualine_c = { 'filename', 'navic' },
+        lualine_x = { lsp_server_names, 'encoding', { 'copilot', show_colors = true, show_loading = true }, 'filetype' },
+      },
+    })
+  end,
 }

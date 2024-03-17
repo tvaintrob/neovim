@@ -8,11 +8,7 @@ return {
     local null_ls = require('null-ls')
 
     local function null_ls_format()
-      vim.lsp.buf.format({
-        filter = function(client)
-          return client.name == 'null-ls'
-        end,
-      })
+      vim.lsp.buf.format({})
     end
 
     null_ls.setup({
