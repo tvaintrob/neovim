@@ -13,6 +13,7 @@ return {
 
     treesitter.setup({
       ensure_installed = 'all',
+      ignore_install = { 'wing' },
       additional_vim_regex_highlighting = false,
 
       indent = { enable = true, disable = { 'python' } },
