@@ -15,6 +15,7 @@ return {
 
     require('mason-tool-installer').setup({
       ensure_installed = {
+        -- language servers
         'gopls',
         'css-lsp',
         'html-lsp',
@@ -29,24 +30,27 @@ return {
         'typescript-language-server',
         'dockerfile-language-server',
         'tailwindcss-language-server',
+
+        -- formatters
+        'stylua',
+        'prettier',
+        'prettierd',
+        'goimports',
+
+        -- debug adapters,
+        'delve',
+        'debugpy',
       },
     })
 
     require('neodev').setup()
     require('mason-lspconfig').setup_handlers({
       function(server_name)
-        -- local handlers = {
-        --   ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'single' }),
-        -- }
-        --
         require('lspconfig')[server_name].setup({
-          -- handlers = handlers,
           capabilities = require('cmp_nvim_lsp').default_capabilities(),
         })
       end,
     })
-
-    -- require('lsp_signature').setup({ hint_enable = false })
 
     -- Setup keymaps only when a server is attached
     vim.api.nvim_create_autocmd('LspAttach', {
