@@ -1,7 +1,8 @@
 local M = {}
 
 ---Make sure lazy.nvim is installed and loaded
-M.ensure_package_manager = function()
+---@overload fun(opts: LazyConfig)
+M.ensure_package_manager = function(opts)
   local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
   if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
@@ -17,7 +18,24 @@ M.ensure_package_manager = function()
   local lazy = require('lazy')
 
   M.enable_lazy_file()
-  return lazy
+  lazy.setup(opts, {
+    change_detection = { notify = false },
+    install = { colorscheme = { 'vscode' } },
+    performance = {
+      rtp = {
+        disabled_plugins = {
+          'gzip',
+          'tutor',
+          'tohtml',
+          'matchit',
+          'tarPlugin',
+          'zipPlugin',
+          'matchparen',
+          'netrwPlugin',
+        },
+      },
+    },
+  })
 end
 
 ---Properly load file based plugins without blocking the UI

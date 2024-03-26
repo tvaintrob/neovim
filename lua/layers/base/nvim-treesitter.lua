@@ -13,10 +13,7 @@ return {
     auto_install = true,
     ensure_installed = 'all',
     ignore_install = { 'wing' },
-    indent = {
-      enable = true,
-      disable = { 'python' },
-    },
+    indent = { enable = true },
     highlight = {
       enable = true,
       additional_vim_regex_highlighting = false,

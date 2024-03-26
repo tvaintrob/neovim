@@ -1,14 +1,14 @@
 return {
   'NvChad/nvim-colorizer.lua',
   config = function()
-    require("colorizer").setup {
-      filetypes = { "*" },
+    require('colorizer').setup({
+      filetypes = { '*' },
       user_default_options = {
         css = true,
-        mode = "background",
+        mode = 'background',
         tailwind = true,
-        always_update = false
+        always_update = false,
       },
-    }
-  end
+    })
+  end,
 }

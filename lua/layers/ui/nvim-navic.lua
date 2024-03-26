@@ -1,5 +1,5 @@
 return {
-  "SmiteshP/nvim-navic",
+  'SmiteshP/nvim-navic',
   config = function()
     require('nvim-navic').setup({
       icons = {
@@ -28,9 +28,9 @@ return {
         Struct = ' ',
         Event = ' ',
         Operator = ' ',
-        TypeParameter = ' '
+        TypeParameter = ' ',
       },
-      lsp = { auto_attach = true }
+      lsp = { auto_attach = true },
     })
-  end
+  end,
 }

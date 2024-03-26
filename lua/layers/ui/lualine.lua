@@ -4,7 +4,6 @@ return {
     'lunarvim/darkplus.nvim',
     'AndreM222/copilot-lualine',
     'nvim-tree/nvim-web-devicons',
-    'arkav/lualine-lsp-progress',
   },
   config = function()
     vim.o.showmode = false
@@ -28,15 +27,7 @@ return {
         section_separators = { left = '', right = '' },
       },
       sections = {
-        lualine_c = {
-          'filename',
-          'navic',
-          {
-            'lsp_progress',
-            display_components = { 'lsp_client_name', 'spinner' },
-            spinner_symbols = { '⣾', '⣽', '⣻', '⢿', '⡿', '⣟', '⣯', '⣷' },
-          },
-        },
+        lualine_c = { 'filename', 'navic' },
         lualine_x = {
           lsp_server_names,
           'encoding',

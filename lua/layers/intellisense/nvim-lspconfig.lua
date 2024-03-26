@@ -35,13 +35,18 @@ return {
     require('neodev').setup()
     require('mason-lspconfig').setup_handlers({
       function(server_name)
+        -- local handlers = {
+        --   ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'single' }),
+        -- }
+        --
         require('lspconfig')[server_name].setup({
+          -- handlers = handlers,
           capabilities = require('cmp_nvim_lsp').default_capabilities(),
         })
       end,
     })
 
-    require('lsp_signature').setup({ hint_enable = false })
+    -- require('lsp_signature').setup({ hint_enable = false })
 
     -- Setup keymaps only when a server is attached
     vim.api.nvim_create_autocmd('LspAttach', {
@@ -53,9 +58,6 @@ return {
         vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
         vim.keymap.set({ 'n', 'v' }, '<leader>ac', vim.lsp.buf.code_action, opts)
         vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-        vim.keymap.set('n', '<leader>f', function()
-          vim.lsp.buf.format({ async = true })
-        end, opts)
       end,
     })
   end,
