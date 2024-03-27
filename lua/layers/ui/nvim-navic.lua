@@ -1,5 +1,6 @@
 return {
   'SmiteshP/nvim-navic',
+  event = 'LazyFile',
   config = function()
     require('nvim-navic').setup({
       icons = {

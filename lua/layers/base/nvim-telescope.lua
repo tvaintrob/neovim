@@ -4,9 +4,8 @@ return {
   cmd = 'Telescope',
   keys = {
     { '<c-p>', '<cmd>Telescope find_files<cr>' },
-    { '<leader>pf', '<cmd>Telescope live_grep<cr>' },
-    { '<leader>ps', '<cmd>Telescope lsp_workspace_symbols<cr>' },
-    { '<leader>d', '<cmd>Telescope diagnostics<cr>' },
+    { '<leader>pf', '<cmd>Telescope live_grep<cr>', desc = 'Telescope live grep' },
+    { '<leader>ps', '<cmd>Telescope lsp_workspace_symbols<cr>', desc = 'Telescope search symbols' },
   },
   dependencies = {
     { 'nvim-lua/popup.nvim' },

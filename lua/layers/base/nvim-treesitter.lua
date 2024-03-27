@@ -37,12 +37,8 @@ return {
           ['ii'] = { query = '@conditional.inner', desc = 'inner part of an if statement' },
           ['al'] = { query = '@loop.outer', desc = 'around a loop' },
           ['il'] = { query = '@loop.inner', desc = 'inner part of a loop' },
-          ['ap'] = { query = '@parameter.outer', desc = 'around parameter' },
-          ['ip'] = { query = '@parameter.inner', desc = 'inside a parameter' },
         },
         selection_modes = {
-          ['@parameter.outer'] = 'v', -- charwise
-          ['@parameter.inner'] = 'v', -- charwise
           ['@function.outer'] = 'v', -- charwise
           ['@conditional.outer'] = 'V', -- linewise
           ['@loop.outer'] = 'V', -- linewise

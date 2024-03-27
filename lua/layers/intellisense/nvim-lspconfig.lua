@@ -57,11 +57,21 @@ return {
       group = vim.api.nvim_create_augroup('UserLspConfig', {}),
       callback = function(ev)
         local opts = { buffer = ev.buf, noremap = true }
-        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
         vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-        vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
-        vim.keymap.set({ 'n', 'v' }, '<leader>ac', vim.lsp.buf.code_action, opts)
-        vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+        vim.keymap.set('n', 'gr', vim.lsp.buf.references, vim.tbl_extend('force', opts, { desc = 'Show references' }))
+        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, vim.tbl_extend('force', opts, { desc = 'Go to definition' }))
+        vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, vim.tbl_extend('force', opts, { desc = 'Rename symbol' }))
+
+        vim.keymap.set(
+          { 'n', 'v' },
+          '<leader>ac',
+          vim.lsp.buf.code_action,
+          vim.tbl_extend('force', opts, { desc = 'Show code actions' })
+        )
+
+        vim.keymap.set('n', '<leader>d', function()
+          vim.diagnostic.open_float({ scope = 'line', border = 'single' })
+        end, vim.tbl_extend('force', opts, { desc = 'Show line diagnostics' }))
       end,
     })
   end,
