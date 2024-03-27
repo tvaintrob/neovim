@@ -24,6 +24,3 @@ vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { silent = true, noremap = true })
 -- disable command history
 vim.keymap.set('n', 'Q', '<nop>', { noremap = true })
 vim.keymap.set('n', 'q:', '<nop>', { noremap = true })
-
--- basic file re-indent
-vim.keymap.set('n', '==', 'gg=G', { noremap = true })
