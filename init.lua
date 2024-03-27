@@ -1,6 +1,7 @@
 -- Personal Neovim Configuration
 -- https://github.com/tvaintrob/neovim
 
+require('ft')
 require('opts')
 require('keymaps')
 
