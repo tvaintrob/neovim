@@ -1,5 +1,6 @@
 return {
   'nvim-lualine/lualine.nvim',
+  event = 'LazyFile',
   dependencies = {
     'lunarvim/darkplus.nvim',
     'AndreM222/copilot-lualine',

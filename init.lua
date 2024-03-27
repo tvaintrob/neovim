@@ -11,4 +11,5 @@ require('utils').ensure_package_manager({
   { import = 'layers.editor' },
   { import = 'layers.debug' },
   { import = 'layers.ui' },
+  { import = 'layers.ai' },
 })
