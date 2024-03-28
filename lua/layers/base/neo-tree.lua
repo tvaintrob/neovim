@@ -39,6 +39,9 @@ return {
       },
     })
 
-    vim.keymap.set('n', '-', '<cmd>Neotree filesystem float reveal<cr>', { noremap = true })
+    vim.keymap.set('n', '-', function()
+      local type = vim.api.nvim_buf_get_name(0) == '' and 'float' or 'current'
+      vim.cmd('Neotree filesystem ' .. type .. ' reveal')
+    end, { noremap = true })
   end,
 }
