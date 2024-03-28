@@ -1,5 +1,9 @@
 local M = {}
 
+M.feedkey = function(key, mode)
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
+end
+
 ---Make sure lazy.nvim is installed and loaded
 ---@overload fun(opts: LazyConfig)
 M.ensure_package_manager = function(opts)

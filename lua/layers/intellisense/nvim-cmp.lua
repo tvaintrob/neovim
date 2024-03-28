@@ -80,6 +80,20 @@ return {
         ['<C-k>'] = cmp.mapping.select_prev_item({ behavior = cmptypes.cmp.SelectBehavior.Select }),
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<CR>'] = cmp.mapping.confirm({ select = true }),
+        ['<Tab>'] = cmp.mapping(function(fallback)
+          if vim.fn['vsnip#available'](1) == 1 then
+            require('utils').feedkey('<Plug>(vsnip-expand-or-jump)', '')
+          elseif require('copilot.suggestion').is_visible() then
+            require('copilot.suggestion').accept()
+          else
+            fallback()
+          end
+        end, { 'i', 's' }),
+        ['<S-Tab>'] = cmp.mapping(function()
+          if vim.fn['vsnip#jumpable'](-1) == 1 then
+            require('utils').feedkey('<Plug>(vsnip-jump-prev)', '')
+          end
+        end, { 'i', 's' }),
       }),
       sources = cmp.config.sources({
         { name = 'nvim_lsp' },

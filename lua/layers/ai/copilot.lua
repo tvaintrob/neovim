@@ -5,10 +5,7 @@ return {
     event = 'InsertEnter',
     config = function()
       require('copilot').setup({
-        suggestion = {
-          auto_trigger = true,
-          keymap = { accept = '<Tab>' },
-        },
+        suggestion = { auto_trigger = true },
       })
     end,
   },
