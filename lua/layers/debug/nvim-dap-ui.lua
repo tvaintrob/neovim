@@ -2,8 +2,8 @@ return {
   'rcarriga/nvim-dap-ui',
   dependencies = {
     'mfussenegger/nvim-dap',
-    'mfussenegger/nvim-dap-python',
     'nvim-neotest/nvim-nio',
+    { 'theHamsta/nvim-dap-virtual-text', config = true },
   },
   cmd = {
     'DapShowLog',
@@ -48,6 +48,7 @@ return {
     },
   },
   config = function()
+    require('dap.ext.vscode').load_launchjs()
     require('dapui').setup()
     local dap = require('dap')
     local dapui = require('dapui')
@@ -70,8 +71,5 @@ return {
 
     vim.fn.sign_define('DapBreakpoint', { text = '●', texthl = '@comment.error' })
     vim.fn.sign_define('DapStopped', { text = '▶️', texthl = '', linehl = 'PmenuSel', numhl = '' })
-
-    local debugpy_path = vim.fn.stdpath('data') .. '/mason/packages/debugpy/venv/bin/python'
-    require('dap-python').setup(debugpy_path)
   end,
 }
