@@ -36,6 +36,7 @@ return {
         'prettier',
         'prettierd',
         'goimports',
+        'golines',
 
         -- debug adapters,
         'delve',

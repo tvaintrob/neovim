@@ -17,6 +17,7 @@ return {
         table.insert(server_names, value.name)
       end
 
+      table.sort(server_names)
       return '  LSP: ' .. table.concat(server_names, ', ')
     end
 
