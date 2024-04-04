@@ -12,6 +12,7 @@ return {
     { 'nvim-lua/plenary.nvim' },
     { 'nvim-tree/nvim-web-devicons' },
     { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+    { 'msvechla/yaml-companion.nvim', branch = 'kubernetes_crd_detection' },
   },
   config = function()
     local telescope = require('telescope')
@@ -45,5 +46,6 @@ return {
 
     -- load telescope extensions
     telescope.load_extension('fzf')
+    telescope.load_extension('yaml_schema')
   end,
 }

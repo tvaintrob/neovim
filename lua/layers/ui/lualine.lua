@@ -5,6 +5,7 @@ return {
     'lunarvim/darkplus.nvim',
     'AndreM222/copilot-lualine',
     'nvim-tree/nvim-web-devicons',
+    { 'msvechla/yaml-companion.nvim', branch = 'kubernetes_crd_detection' },
   },
   config = function()
     vim.o.showmode = false
@@ -21,6 +22,14 @@ return {
       return '  LSP: ' .. table.concat(server_names, ', ')
     end
 
+    local function yaml_schema()
+      local schema = require('yaml-companion').get_buf_schema(0)
+      if schema.result[1].name == 'none' then
+        return ''
+      end
+      return schema and '  YAML: ' .. schema.result[1].name
+    end
+
     require('lualine').setup({
       options = {
         theme = 'darkplus',
@@ -31,6 +40,7 @@ return {
       sections = {
         lualine_c = { 'filename', 'navic' },
         lualine_x = {
+          yaml_schema,
           lsp_server_names,
           'encoding',
           {

@@ -8,6 +8,7 @@ return {
     'folke/neodev.nvim',
     'hrsh7th/cmp-nvim-lsp',
     'ray-x/lsp_signature.nvim',
+    { 'msvechla/yaml-companion.nvim', branch = 'kubernetes_crd_detection' },
   },
   config = function()
     require('mason').setup()
@@ -50,6 +51,10 @@ return {
         require('lspconfig')[server_name].setup({
           capabilities = require('cmp_nvim_lsp').default_capabilities(),
         })
+      end,
+      ['yamlls'] = function()
+        local cfg = require('yaml-companion').setup()
+        require('lspconfig')['yamlls'].setup(cfg)
       end,
 
       ['pyright'] = function()
