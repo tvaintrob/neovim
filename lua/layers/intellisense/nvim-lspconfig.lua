@@ -58,6 +58,28 @@ return {
         require('lspconfig')['yamlls'].setup(cfg)
       end,
 
+      ['tailwindcss'] = function()
+        local configs = require('lspconfig.configs')
+        require('lspconfig').tailwindcss.setup({
+          capabilities = require('cmp_nvim_lsp').default_capabilities(),
+          filetypes = { table.unpack(configs.tailwindcss.document_config.default_config.filetypes), 'go' },
+          init_options = { userLanguages = { go = 'go' } },
+          settings = {
+            tailwindCSS = {
+              experimental = {
+                classRegex = {
+                  { 'Class\\(([^)]*)\\)', '["`]([^"`]*)["`]' },
+                  { 'Classes\\(([^)]*)\\)', '["`]([^"`]*)["`]' },
+                  { 'Class\\{([^)]*)\\}', '["`]([^"`]*)["`]' },
+                  { 'Classes\\{([^)]*)\\}', '["`]([^"`]*)["`]' },
+                  { 'Class:\\s*["`]([^"`]*)["`]' },
+                  { 'Classes:\\s*["`]([^"`]*)["`]' },
+                },
+              },
+            },
+          },
+        })
+      end,
       ['pyright'] = function()
         require('lspconfig').pyright.setup({
           capabilities = require('cmp_nvim_lsp').default_capabilities(),

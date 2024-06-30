@@ -36,6 +36,7 @@ return {
         lua = { 'stylua' },
         go = { 'golines' },
         sql = { 'sqlfmt' },
+        query = { 'format-queries' },
         [{ 'json', 'yaml', 'javascript', 'typescript', 'markdown' }] = { { 'prettierd', 'prettier' } },
       }),
     })
