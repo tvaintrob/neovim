@@ -35,6 +35,7 @@ return {
       formatters_by_ft = ft_format({
         lua = { 'stylua' },
         go = { 'golines' },
+        sql = { 'sqlfmt' },
         [{ 'json', 'yaml', 'javascript', 'typescript', 'markdown' }] = { { 'prettierd', 'prettier' } },
       }),
     })

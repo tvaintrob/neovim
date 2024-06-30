@@ -24,6 +24,7 @@ return {
         'json-lsp',
         'ruff-lsp',
         'pyright',
+        'tsp-server',
         'rust-analyzer',
         'lua-language-server',
         'bash-language-server',
@@ -70,6 +71,8 @@ return {
         })
       end,
     })
+
+    require('lspconfig').tsp_server.setup({})
 
     -- Setup keymaps only when a server is attached
     vim.api.nvim_create_autocmd('LspAttach', {
