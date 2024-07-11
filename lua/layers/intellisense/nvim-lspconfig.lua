@@ -60,7 +60,7 @@ return {
       end,
 
       ['gopls'] = function()
-        require('lspconfig').pyright.setup({
+        require('lspconfig').gopls.setup({
           capabilities = require('cmp_nvim_lsp').default_capabilities(),
           settings = {
             gopls = {
@@ -126,9 +126,9 @@ return {
         vim.keymap.set('n', 'gr', vim.lsp.buf.references, vim.tbl_extend('force', opts, { desc = 'Show references' }))
         vim.keymap.set('n', 'gd', vim.lsp.buf.definition, vim.tbl_extend('force', opts, { desc = 'Go to definition' }))
         vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, vim.tbl_extend('force', opts, { desc = 'Rename symbol' }))
-        vim.keymap.set('n', '<space>i', function()
-          vim.lsp.inlay_hint.enable(true)
-        end, vim.tbl_extend('force', opts, { desc = 'Enable inlay hints' }))
+        vim.keymap.set('n', '<leader>i', function()
+          vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+        end, vim.tbl_extend('force', opts, { desc = 'Toggle inlay hints' }))
 
         vim.keymap.set(
           { 'n', 'v' },
