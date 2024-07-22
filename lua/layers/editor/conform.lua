@@ -34,10 +34,13 @@ return {
     require('conform').setup({
       formatters_by_ft = ft_format({
         lua = { 'stylua' },
-        go = { 'golines' },
+        go = { 'goimports' },
         sql = { 'sqlfmt' },
         query = { 'format-queries' },
-        [{ 'json', 'yaml', 'javascript', 'typescript', 'markdown' }] = { { 'prettierd', 'prettier' } },
+        html = { 'prettier' },
+        [{ 'json', 'yaml', 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'markdown' }] = {
+          'prettier',
+        },
       }),
     })
   end,

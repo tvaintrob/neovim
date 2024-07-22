@@ -79,11 +79,10 @@ return {
       end,
 
       ['tailwindcss'] = function()
-        local configs = require('lspconfig.configs')
         require('lspconfig').tailwindcss.setup({
           capabilities = require('cmp_nvim_lsp').default_capabilities(),
-          filetypes = { table.unpack(configs.tailwindcss.document_config.default_config.filetypes), 'go' },
-          init_options = { userLanguages = { go = 'go' } },
+          filetypes = { 'html', 'go', 'javascript', 'typescript', 'javascriptreact', 'typescriptreact' },
+          init_options = { userLanguages = { go = 'go', html = 'html' } },
           settings = {
             tailwindCSS = {
               experimental = {
