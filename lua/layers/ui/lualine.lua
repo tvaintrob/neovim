@@ -11,7 +11,7 @@ return {
     vim.o.showmode = false
 
     local function lsp_server_names()
-      local servers = vim.lsp.get_active_clients({ bufnr = 0 })
+      local servers = vim.lsp.get_clients({ bufnr = 0 })
       local server_names = {}
 
       for _, value in ipairs(servers) do
@@ -38,7 +38,7 @@ return {
         section_separators = { left = '', right = '' },
       },
       sections = {
-        lualine_c = { 'filename', 'navic' },
+        lualine_c = { { 'filename', path = 1 }, 'navic' },
         lualine_x = {
           yaml_schema,
           lsp_server_names,

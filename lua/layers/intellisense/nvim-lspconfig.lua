@@ -1,5 +1,6 @@
 return {
   'neovim/nvim-lspconfig',
+  cmd = 'Mason',
   event = 'LazyFile',
   dependencies = {
     'williamboman/mason.nvim',
@@ -11,12 +12,14 @@ return {
     { 'msvechla/yaml-companion.nvim', branch = 'kubernetes_crd_detection' },
   },
   config = function()
+    require('lspconfig-extensions')
     require('mason').setup()
     require('mason-lspconfig').setup()
 
     require('mason-tool-installer').setup({
       ensure_installed = {
         -- language servers
+        'kcl',
         'gopls',
         'css-lsp',
         'html-lsp',
@@ -24,6 +27,7 @@ return {
         'json-lsp',
         'ruff-lsp',
         'pyright',
+        'jinja-lsp',
         'tsp-server',
         'rust-analyzer',
         'lua-language-server',
@@ -54,8 +58,25 @@ return {
         })
       end,
 
+      ['html'] = function()
+        require('lspconfig').html.setup({
+          capabilities = require('cmp_nvim_lsp').default_capabilities(),
+          filetypes = { 'html', 'templ', 'htmldjango' },
+        })
+      end,
+
       ['yamlls'] = function()
-        local cfg = require('yaml-companion').setup()
+        local cfg = require('yaml-companion').setup({
+          lspconfig = {
+            settings = {
+              yaml = {
+                schemas = {
+                  ['https://taskfile.dev/schema.json'] = 'taskfile.{yml,yaml}',
+                },
+              },
+            },
+          },
+        })
         require('lspconfig')['yamlls'].setup(cfg)
       end,
 
@@ -81,8 +102,8 @@ return {
       ['tailwindcss'] = function()
         require('lspconfig').tailwindcss.setup({
           capabilities = require('cmp_nvim_lsp').default_capabilities(),
-          filetypes = { 'html', 'go', 'javascript', 'typescript', 'javascriptreact', 'typescriptreact' },
-          init_options = { userLanguages = { go = 'go', html = 'html' } },
+          filetypes = { 'html', 'htmldjango', 'go', 'javascript', 'typescript', 'javascriptreact', 'typescriptreact' },
+          init_options = { userLanguages = { go = 'go', html = 'html', htmldjango = 'html' } },
           settings = {
             tailwindCSS = {
               experimental = {
@@ -115,6 +136,11 @@ return {
     })
 
     require('lspconfig').tsp_server.setup({})
+    require('lspconfig').kcl.setup({
+      cmd = { 'kcl-language-server' },
+      filetypes = { 'kcl' },
+      root_dir = require('lspconfig.util').root_pattern('.git', 'kcl.mod'),
+    })
 
     -- Setup keymaps only when a server is attached
     vim.api.nvim_create_autocmd('LspAttach', {

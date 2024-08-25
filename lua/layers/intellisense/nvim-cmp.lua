@@ -83,8 +83,8 @@ return {
         ['<Tab>'] = cmp.mapping(function(fallback)
           if vim.fn['vsnip#available'](1) == 1 then
             require('utils').feedkey('<Plug>(vsnip-expand-or-jump)', '')
-          elseif require('copilot.suggestion').is_visible() then
-            require('copilot.suggestion').accept()
+          -- elseif require('copilot.suggestion').is_visible() then
+          --   require('copilot.suggestion').accept()
           else
             fallback()
           end

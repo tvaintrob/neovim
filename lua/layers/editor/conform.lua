@@ -38,6 +38,7 @@ return {
         sql = { 'sqlfmt' },
         query = { 'format-queries' },
         html = { 'prettier' },
+        htmldjango = { 'djlint' },
         [{ 'json', 'yaml', 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'markdown' }] = {
           'prettier',
         },
