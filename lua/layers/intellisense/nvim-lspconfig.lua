@@ -19,7 +19,6 @@ return {
     require('mason-tool-installer').setup({
       ensure_installed = {
         -- language servers
-        'kcl',
         'gopls',
         'css-lsp',
         'html-lsp',
@@ -136,11 +135,6 @@ return {
     })
 
     require('lspconfig').tsp_server.setup({})
-    require('lspconfig').kcl.setup({
-      cmd = { 'kcl-language-server' },
-      filetypes = { 'kcl' },
-      root_dir = require('lspconfig.util').root_pattern('.git', 'kcl.mod'),
-    })
 
     -- Setup keymaps only when a server is attached
     vim.api.nvim_create_autocmd('LspAttach', {
