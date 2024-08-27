@@ -69,7 +69,15 @@ return {
         fields = { 'abbr', 'kind', 'menu' },
         expandable_indicator = true,
         format = function(_, vim_item)
-          vim_item.kind = (cmp_kinds[vim_item.kind] or '') .. vim_item.kind
+          local kind = vim_item.kind
+          local has_error = pcall(function()
+            kind = (cmp_kinds[vim_item.kind] or '') .. vim_item.kind
+          end)
+
+          if not has_error then
+            vim_item.kind = kind
+          end
+
           return vim_item
         end,
       },
