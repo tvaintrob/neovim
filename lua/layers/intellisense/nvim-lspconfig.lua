@@ -12,7 +12,6 @@ return {
     { 'msvechla/yaml-companion.nvim', branch = 'kubernetes_crd_detection' },
   },
   config = function()
-    require('lspconfig-extensions')
     require('mason').setup()
     require('mason-lspconfig').setup()
 
@@ -24,16 +23,15 @@ return {
         'html-lsp',
         'htmx-lsp',
         'json-lsp',
-        'ruff-lsp',
+        'ruff',
         'pyright',
-        'jinja-lsp',
-        'tsp-server',
         'rust-analyzer',
         'lua-language-server',
         'bash-language-server',
         'yaml-language-server',
         'typescript-language-server',
         'dockerfile-language-server',
+        'docker-compose-language-service',
         'tailwindcss-language-server',
 
         -- formatters
@@ -133,8 +131,6 @@ return {
         })
       end,
     })
-
-    require('lspconfig').tsp_server.setup({})
 
     -- Setup keymaps only when a server is attached
     vim.api.nvim_create_autocmd('LspAttach', {
