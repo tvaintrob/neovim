@@ -4,7 +4,7 @@ Personal Neovim configuration.
 
 ## Installation
 
-to install this config, run the following:
+To install this config, run the following:
 
 ```bash
 # backup previous configuration
@@ -16,5 +16,6 @@ git clone https://github.com/tvaintrob/neovim.git $HOME/.config/nvim
 
 The following are required to use the configuration:
 
+- Neovim >= 0.10.0
 - A [nerd-font](https://github.com/ryanoasis/nerd-fonts) for glyphs.
 - [Pre-commit](https://pre-commit.com/) when editing the configuration.

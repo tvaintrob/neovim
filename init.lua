@@ -1,14 +1,29 @@
 -- Personal Neovim Configuration
 -- https://github.com/tvaintrob/neovim
 
-require('ft')
-require('opts')
-require('keymaps')
+require('tvaintrob.opts')
+require('tvaintrob.keymaps')
+require('tvaintrob.autocmds')
 
-require('utils').ensure_package_manager({
-  { import = 'layers.base' },
-  { import = 'layers.intellisense' },
-  { import = 'layers.editor' },
-  { import = 'layers.debug' },
-  { import = 'layers.ui' },
+-- install lazy.nvim and setup plugins
+require('tvaintrob.utils.lazy').setup({
+  -- load basic plugins
+  { import = 'tvaintrob.plugins' },
+  { import = 'tvaintrob.extras.completion' },
+  { import = 'tvaintrob.extras.debug' },
+
+  -- TODO: add this
+  -- { import = 'tvaintrob.extras.linting' },
+
+  -- add language support
+  { import = 'tvaintrob.extras.language.go' },
+  { import = 'tvaintrob.extras.language.python' },
+  { import = 'tvaintrob.extras.language.typescript' },
+  { import = 'tvaintrob.extras.language.docker' },
+  { import = 'tvaintrob.extras.language.terraform' },
+  { import = 'tvaintrob.extras.language.toml' },
+  { import = 'tvaintrob.extras.language.json' },
+  { import = 'tvaintrob.extras.language.yaml' },
+  { import = 'tvaintrob.extras.language.html' },
+  { import = 'tvaintrob.extras.language.markdown' },
 })
