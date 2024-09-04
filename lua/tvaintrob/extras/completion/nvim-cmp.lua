@@ -38,7 +38,6 @@ return {
           completion = cmp.config.window.bordered(),
           documentation = cmp.config.window.bordered(),
         },
-
         formatting = {
           expandable_indicator = true,
           fields = { 'abbr', 'kind', 'menu' },
@@ -72,7 +71,6 @@ return {
           { name = 'nvim_lsp' },
           { name = 'path' },
         }, {
-          { name = 'snippets' },
           { name = 'buffer' },
         }),
       }

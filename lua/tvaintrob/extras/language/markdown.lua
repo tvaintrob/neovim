@@ -33,17 +33,20 @@ return {
   },
 
   {
-    'MeanderingProgrammer/render-markdown.nvim',
+    'OXY2DEV/markview.nvim',
     ft = { 'markdown' },
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter',
+      'nvim-tree/nvim-web-devicons',
+    },
     opts = {
-      code = {
-        sign = false,
-        width = 'block',
-        right_pad = 1,
-      },
-      heading = {
-        sign = false,
-        icons = {},
+      modes = { 'n', 'no', 'c' },
+      hybrid_modes = { 'i' },
+      callbacks = {
+        on_enable = function(_, win)
+          vim.wo[win].conceallevel = 2
+          vim.wo[win].concealcursor = 'c'
+        end,
       },
     },
   },
