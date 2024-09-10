@@ -44,8 +44,8 @@ return {
       hybrid_modes = { 'i' },
       callbacks = {
         on_enable = function(_, win)
-          vim.wo[win].conceallevel = 2
-          vim.wo[win].concealcursor = 'c'
+          vim.wo[win][0].conceallevel = 2
+          vim.wo[win][0].concealcursor = 'c'
         end,
       },
     },

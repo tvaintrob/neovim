@@ -1,6 +1,14 @@
 return {
-  { 'windwp/nvim-ts-autotag', event = 'LazyFile', opts = {} },
   { 'folke/ts-comments.nvim', event = 'VeryLazy', opts = {} },
+
+  {
+    'windwp/nvim-ts-autotag',
+    event = 'LazyFile',
+    opts = {
+      enable_rename = false,
+      enable_close_on_slash = false,
+    },
+  },
 
   {
     'nvim-treesitter/nvim-treesitter',
