@@ -32,12 +32,19 @@ return {
             filetypes = {
               'go',
               'html',
+              'templ',
               'javascript',
               'typescript',
               'javascriptreact',
               'typescriptreact',
             },
-            init_options = { userLanguages = { go = 'go', html = 'html' } },
+            init_options = {
+              userLanguages = {
+                go = 'go',
+                html = 'html',
+                templ = 'html',
+              },
+            },
             settings = {
               tailwindCSS = {
                 experimental = {

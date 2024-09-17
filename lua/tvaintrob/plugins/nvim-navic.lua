@@ -30,6 +30,9 @@ return {
       Operator = ' ',
       TypeParameter = ' ',
     },
-    lsp = { auto_attach = true },
+    lsp = {
+      auto_attach = true,
+      preference = { 'templ', 'html' },
+    },
   },
 }

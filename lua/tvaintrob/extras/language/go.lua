@@ -4,6 +4,7 @@ return {
     opts = {
       formatters_by_ft = {
         go = { 'goimports', 'gofmt', stop_after_first = true },
+        templ = { 'templ' },
       },
     },
   },
@@ -14,6 +15,7 @@ return {
       ensure_installed = {
         'gopls',
         'goimports',
+        'templ',
       },
     },
   },
