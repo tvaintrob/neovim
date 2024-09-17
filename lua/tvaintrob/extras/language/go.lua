@@ -16,6 +16,7 @@ return {
         'gopls',
         'goimports',
         'templ',
+        'delve',
       },
     },
   },
@@ -43,5 +44,11 @@ return {
         end,
       },
     },
+  },
+
+  {
+    'leoluz/nvim-dap-go',
+    ft = { 'go' },
+    opts = {},
   },
 }
