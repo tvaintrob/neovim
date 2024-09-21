@@ -11,9 +11,7 @@ require('tvaintrob.utils.lazy').setup({
   { import = 'tvaintrob.plugins' },
   { import = 'tvaintrob.extras.completion' },
   { import = 'tvaintrob.extras.debug' },
-
-  -- TODO: add this
-  -- { import = 'tvaintrob.extras.linting' },
+  { import = 'tvaintrob.extras.linting' },
 
   -- add language support
   { import = 'tvaintrob.extras.language.go' },

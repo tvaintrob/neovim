@@ -10,11 +10,21 @@ return {
   },
 
   {
+    'mfussenegger/nvim-lint',
+    opts = {
+      linters_by_ft = {
+        go = { 'golangcilint' },
+      },
+    },
+  },
+
+  {
     'whoissethdaniel/mason-tool-installer.nvim',
     opts = {
       ensure_installed = {
         'gopls',
         'goimports',
+        'golangci-lint',
         'templ',
         'delve',
       },
