@@ -9,4 +9,5 @@ return {
     'DiffviewRefresh',
     'DiffviewLog',
   },
+  opts = {},
 }
