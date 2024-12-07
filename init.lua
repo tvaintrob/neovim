@@ -19,9 +19,12 @@ require('tvaintrob.utils.lazy').setup({
   { import = 'tvaintrob.extras.language.typescript' },
   { import = 'tvaintrob.extras.language.docker' },
   { import = 'tvaintrob.extras.language.terraform' },
+  { import = 'tvaintrob.extras.language.sql' },
   { import = 'tvaintrob.extras.language.toml' },
   { import = 'tvaintrob.extras.language.json' },
   { import = 'tvaintrob.extras.language.yaml' },
   { import = 'tvaintrob.extras.language.html' },
+  { import = 'tvaintrob.extras.language.rust' },
+  { import = 'tvaintrob.extras.language.clangd' },
   { import = 'tvaintrob.extras.language.markdown' },
 })

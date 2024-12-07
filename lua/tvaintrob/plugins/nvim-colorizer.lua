@@ -4,13 +4,14 @@ return {
   opts = {
     filetypes = {
       '*',
-      python = { names = false },
+      css = { names = true },
     },
     user_default_options = {
       css = true,
       mode = 'background',
+      names = false,
       tailwind = true,
-      always_update = false,
+      always_update = true,
     },
   },
 }

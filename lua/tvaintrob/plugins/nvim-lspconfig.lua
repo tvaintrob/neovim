@@ -1,5 +1,15 @@
 return {
   {
+    'artemave/workspace-diagnostics.nvim',
+    opts = {
+      workspace_files = function()
+        local workspace_files = vim.fn.split(vim.fn.system('git ls-files'), '\n')
+        return workspace_files
+      end,
+    },
+  },
+
+  {
     'whoissethdaniel/mason-tool-installer.nvim',
     dependencies = { 'williamboman/mason.nvim' },
     opts = {

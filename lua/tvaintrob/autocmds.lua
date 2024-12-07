@@ -43,6 +43,8 @@ vim.api.nvim_create_autocmd('FileType', {
 vim.api.nvim_create_autocmd('LspAttach', {
   group = augroup('lsp_attach'),
   callback = function(ev)
+    local client = vim.lsp.get_client_by_id(ev.data.client_id)
+    require('workspace-diagnostics').populate_workspace_diagnostics(client, ev.buf)
     require('tvaintrob.utils.lsp').lsp_keymaps(ev.buf)
   end,
 })

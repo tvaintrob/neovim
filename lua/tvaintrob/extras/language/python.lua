@@ -15,15 +15,7 @@ return {
     opts = {
       handlers = {
         ['pyright'] = function()
-          require('tvaintrob.utils.lsp').setup_server('pyright', {
-            settings = {
-              python = {
-                analysis = {
-                  typeCheckingMode = 'off',
-                },
-              },
-            },
-          })
+          require('tvaintrob.utils.lsp').setup_server('pyright', {})
         end,
       },
     },

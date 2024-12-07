@@ -31,3 +31,4 @@ vim.opt.expandtab = true
 -- define custom filetypes
 vim.filetype.add({ filename = { ['.envrc'] = 'bash' } })
 vim.filetype.add({ extension = { ['json'] = 'jsonc' } })
+vim.filetype.add({ extension = { ['tf'] = 'terraform' } })
