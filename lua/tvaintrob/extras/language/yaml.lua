@@ -20,7 +20,7 @@ return {
   },
 
   { 'b0o/schemastore.nvim', lazy = true },
-  { 'msvechla/yaml-companion.nvim', branch = 'kubernetes_crd_detection', lazy = true },
+  { 'someone-stole-my-name/yaml-companion.nvim', lazy = true },
 
   {
     'williamboman/mason-lspconfig.nvim',

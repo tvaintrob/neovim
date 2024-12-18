@@ -17,7 +17,7 @@ return {
     },
     dependencies = {
       { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
-      { 'msvechla/yaml-companion.nvim', branch = 'kubernetes_crd_detection' },
+      { 'someone-stole-my-name/yaml-companion.nvim' },
     },
     config = function()
       local telescope = require('telescope')

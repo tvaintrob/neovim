@@ -1,5 +1,5 @@
 return {
-  { 'msvechla/yaml-companion.nvim', branch = 'kubernetes_crd_detection' },
+  { 'someone-stole-my-name/yaml-companion.nvim', lazy = true },
   { 'nvim-tree/nvim-web-devicons', lazy = true },
   {
     'nvim-lualine/lualine.nvim',
