@@ -31,23 +31,4 @@ return {
       vim.cmd([[do FileType]])
     end,
   },
-
-  {
-    'OXY2DEV/markview.nvim',
-    ft = { 'markdown' },
-    dependencies = {
-      'nvim-treesitter/nvim-treesitter',
-      'nvim-tree/nvim-web-devicons',
-    },
-    opts = {
-      modes = { 'n', 'no', 'c' },
-      hybrid_modes = { 'i' },
-      callbacks = {
-        on_enable = function(_, win)
-          vim.wo[win][0].conceallevel = 2
-          vim.wo[win][0].concealcursor = 'c'
-        end,
-      },
-    },
-  },
 }

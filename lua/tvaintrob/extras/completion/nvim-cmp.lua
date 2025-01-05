@@ -2,6 +2,7 @@ return {
   { 'windwp/nvim-autopairs', event = 'InsertEnter', opts = {} },
   { 'petertriho/cmp-git', ft = 'gitcommit' },
   { 'davidsierradz/cmp-conventionalcommits', ft = 'gitcommit' },
+  { 'xzbdmw/colorful-menu.nvim', opts = {}, lazy = true },
 
   {
     'hrsh7th/nvim-cmp',
