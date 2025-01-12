@@ -16,6 +16,7 @@ return {
       },
     },
     dependencies = {
+      { 'nvim-telescope/telescope-ui-select.nvim' },
       { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
       { 'someone-stole-my-name/yaml-companion.nvim' },
     },
@@ -46,11 +47,15 @@ return {
             override_file_sorter = true,
             override_generic_sorter = true,
           },
+          ['ui-select'] = {
+            require('telescope.themes').get_cursor({}),
+          },
         },
       })
 
       -- load telescope extensions
       telescope.load_extension('fzf')
+      telescope.load_extension('ui-select')
       telescope.load_extension('yaml_schema')
     end,
   },
