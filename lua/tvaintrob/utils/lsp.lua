@@ -2,7 +2,7 @@ local M = {}
 
 function M.setup_server(server_name, opts)
   opts = opts or {}
-  opts.capabilities = opts.capabilities or require('cmp_nvim_lsp').default_capabilities()
+  opts.capabilities = opts.capabilities or require('blink.cmp').get_lsp_capabilities()
   require('lspconfig')[server_name].setup(opts)
 end
 

@@ -10,7 +10,7 @@ return {
       popupmenu = { enabled = false },
       presets = { lsp_doc_border = true },
       lsp = {
-        hover = { enabled = true },
+        hover = { enabled = false },
         progress = { enabled = true },
         signature = { enabled = true },
         override = {
