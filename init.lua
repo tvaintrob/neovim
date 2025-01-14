@@ -25,6 +25,7 @@ require('tvaintrob.utils.lazy').setup({
   { import = 'tvaintrob.extras.language.yaml' },
   { import = 'tvaintrob.extras.language.html' },
   { import = 'tvaintrob.extras.language.rust' },
+  { import = 'tvaintrob.extras.language.nushell' },
   { import = 'tvaintrob.extras.language.clangd' },
   { import = 'tvaintrob.extras.language.markdown' },
 })
