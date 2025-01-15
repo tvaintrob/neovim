@@ -30,7 +30,6 @@ return {
     'neovim/nvim-lspconfig',
     event = 'LazyFile',
     dependencies = {
-      { 'saghen/blink.cmp' },
       { 'williamboman/mason.nvim', opts = {} },
       {
         'whoissethdaniel/mason-tool-installer.nvim',
