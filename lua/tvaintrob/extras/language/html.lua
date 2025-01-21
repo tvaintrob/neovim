@@ -27,6 +27,15 @@ return {
     'williamboman/mason-lspconfig.nvim',
     opts = {
       handlers = {
+        ['html'] = function()
+          require('tvaintrob.utils.lsp').setup_server('html', {
+            filetypes = {
+              'html',
+              'templ',
+              'htmlangular',
+            },
+          })
+        end,
         ['tailwindcss'] = function()
           require('tvaintrob.utils.lsp').setup_server('tailwindcss', {
             filetypes = {
@@ -35,6 +44,7 @@ return {
               'templ',
               'javascript',
               'typescript',
+              'htmlangular',
               'javascriptreact',
               'typescriptreact',
             },
@@ -43,6 +53,7 @@ return {
                 go = 'go',
                 html = 'html',
                 templ = 'html',
+                htmlangular = 'html',
               },
             },
             settings = {

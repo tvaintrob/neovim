@@ -18,6 +18,7 @@ return {
         'vtsls',
         'prettierd',
         'prettier',
+        'angular-language-server',
       },
     },
   },

@@ -33,8 +33,7 @@ M.kind_icons = {
 ---@param item vim.CompletedItem
 ---@return vim.CompletedItem
 function M.format_item(entry, item)
-  local highlights_info =
-    require('colorful-menu').highlights(entry.completion_item, vim.bo.filetype)
+  local highlights_info = require('colorful-menu').cmp_highlights(entry)
 
   if highlights_info == nil then
     item.abbr = entry.completion_item.label
