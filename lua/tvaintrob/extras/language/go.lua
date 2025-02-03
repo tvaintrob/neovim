@@ -10,21 +10,11 @@ return {
   },
 
   {
-    'mfussenegger/nvim-lint',
-    opts = {
-      linters_by_ft = {
-        go = { 'golangcilint' },
-      },
-    },
-  },
-
-  {
     'whoissethdaniel/mason-tool-installer.nvim',
     opts = {
       ensure_installed = {
         'gopls',
         'goimports',
-        'golangci-lint',
         'templ',
         'delve',
       },
@@ -56,9 +46,24 @@ return {
     },
   },
 
+  -- {
+  --   'leoluz/nvim-dap-go',
+  --   ft = { 'go' },
+  --   opts = {},
+  -- },
+
   {
-    'leoluz/nvim-dap-go',
-    ft = { 'go' },
-    opts = {},
+    'ray-x/go.nvim',
+    dependencies = { -- optional packages
+      'ray-x/guihua.lua',
+      'neovim/nvim-lspconfig',
+      'nvim-treesitter/nvim-treesitter',
+    },
+    config = function()
+      require('go').setup()
+    end,
+    ft = { 'go', 'gomod' },
+    event = { 'CmdlineEnter' },
+    build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
   },
 }
