@@ -71,6 +71,7 @@ return {
         sources = cmp.config.sources({
           { name = 'nvim_lsp' },
           { name = 'path' },
+          { name = 'vim-dadbod-completion' },
         }, {
           { name = 'buffer' },
         }),

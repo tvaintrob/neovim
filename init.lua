@@ -15,17 +15,21 @@ require('tvaintrob.utils.lazy').setup({
 
   -- add language support
   { import = 'tvaintrob.extras.language.go' },
+  { import = 'tvaintrob.extras.language.sql' },
   { import = 'tvaintrob.extras.language.python' },
   { import = 'tvaintrob.extras.language.typescript' },
-  { import = 'tvaintrob.extras.language.docker' },
-  { import = 'tvaintrob.extras.language.terraform' },
-  { import = 'tvaintrob.extras.language.sql' },
+
+  -- markup / config languages
   { import = 'tvaintrob.extras.language.toml' },
   { import = 'tvaintrob.extras.language.json' },
   { import = 'tvaintrob.extras.language.yaml' },
   { import = 'tvaintrob.extras.language.html' },
-  { import = 'tvaintrob.extras.language.rust' },
-  { import = 'tvaintrob.extras.language.nushell' },
-  { import = 'tvaintrob.extras.language.clangd' },
+  { import = 'tvaintrob.extras.language.docker' },
   { import = 'tvaintrob.extras.language.markdown' },
+  { import = 'tvaintrob.extras.language.terraform' },
+
+  -- some additional configs, not actively using these langs
+  -- { import = 'tvaintrob.extras.language.rust' },
+  -- { import = 'tvaintrob.extras.language.clangd' },
+  -- { import = 'tvaintrob.extras.language.nushell' },
 })
