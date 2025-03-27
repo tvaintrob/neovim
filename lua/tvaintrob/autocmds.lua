@@ -52,3 +52,19 @@ vim.api.nvim_create_autocmd('LspAttach', {
     require('tvaintrob.utils.lsp').lsp_keymaps(ev.buf)
   end,
 })
+
+vim.api.nvim_create_autocmd('BufEnter', {
+  group = augroup('win_enter'),
+  callback = function()
+    vim.diagnostic.config({
+      signs = {
+        text = {
+          [vim.diagnostic.severity.HINT] = '󰌵',
+          [vim.diagnostic.severity.WARN] = ' ',
+          [vim.diagnostic.severity.INFO] = ' ',
+          [vim.diagnostic.severity.ERROR] = ' ',
+        },
+      },
+    })
+  end,
+})

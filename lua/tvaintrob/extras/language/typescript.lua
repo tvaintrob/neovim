@@ -22,4 +22,18 @@ return {
       },
     },
   },
+
+  {
+    'williamboman/mason-lspconfig.nvim',
+    opts = {
+      handlers = {
+        ['angularls'] = function()
+          local util = require('lspconfig.util')
+          require('tvaintrob.utils.lsp').setup_server('angularls', {
+            root_dir = util.root_pattern('package.json'),
+          })
+        end,
+      },
+    },
+  },
 }
