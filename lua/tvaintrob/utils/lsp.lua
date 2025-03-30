@@ -15,7 +15,6 @@ function M.lsp_keymaps(_, buffer)
         return vim.tbl_extend('force', { buffer = buffer, noremap = true }, opts)
     end
 
-    set('n', 'K', vim.lsp.buf.hover, with({}))
     set('n', 'gr', vim.lsp.buf.references, with({ desc = 'Show references' }))
     set('n', 'gd', vim.lsp.buf.definition, with({ desc = 'Go to definition' }))
     set('n', '<leader>rn', vim.lsp.buf.rename, with({ desc = 'Rename symbol' }))
