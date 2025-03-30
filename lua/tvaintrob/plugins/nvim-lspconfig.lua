@@ -1,15 +1,5 @@
 return {
     {
-        'artemave/workspace-diagnostics.nvim',
-        opts = {
-            workspace_files = function()
-                local workspace_files = vim.fn.split(vim.fn.system('git ls-files'), '\n')
-                return workspace_files
-            end,
-        },
-    },
-
-    {
         'whoissethdaniel/mason-tool-installer.nvim',
         dependencies = { 'williamboman/mason.nvim' },
         opts = {
@@ -24,7 +14,17 @@ return {
         },
     },
 
-    { 'folke/neodev.nvim', ft = 'lua', lazy = true },
+    {
+        'folke/lazydev.nvim',
+        ft = 'lua', -- only load on lua files
+        opts = {
+            library = {
+                -- See the configuration section for more details
+                -- Load luvit types when the `vim.uv` word is found
+                { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
+            },
+        },
+    },
 
     {
         'neovim/nvim-lspconfig',
@@ -41,9 +41,7 @@ return {
                 opts = {
                     handlers = {
                         require('tvaintrob.utils.lsp').setup_server,
-
                         ['lua_ls'] = function()
-                            require('neodev').setup()
                             require('tvaintrob.utils.lsp').setup_server('lua_ls')
                         end,
                     },

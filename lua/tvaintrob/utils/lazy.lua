@@ -22,7 +22,7 @@ M.setup = function(opts)
     -- setup plugins
     require('lazy').setup(opts, {
         change_detection = { notify = false },
-        install = { colorscheme = { 'vscode' } },
+        install = { colorscheme = { 'vscode', 'tokyonight' } },
         performance = {
             rtp = {
                 disabled_plugins = {

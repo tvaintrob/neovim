@@ -4,13 +4,11 @@ return {
     {
         'nvim-lualine/lualine.nvim',
         event = 'LazyFile',
-        dependencies = { 'lunarvim/darkplus.nvim' },
         init = function()
             vim.opt.showmode = false
         end,
         opts = {
             options = {
-                theme = 'darkplus',
                 icons_enabled = true,
                 section_separators = { left = '', right = '' },
                 component_separators = { left = '', right = '' },

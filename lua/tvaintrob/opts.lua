@@ -32,8 +32,5 @@ vim.opt.expandtab = true
 vim.filetype.add({ filename = { ['.envrc'] = 'bash' } })
 vim.filetype.add({ extension = { ['json'] = 'jsonc' } })
 vim.filetype.add({ extension = { ['tf'] = 'terraform' } })
-vim.filetype.add({
-    pattern = {
-        ['.*/templates/.*%.yaml'] = 'helm',
-    },
-})
+vim.filetype.add({ pattern = { ['.*/templates/.*%.yaml'] = 'helm' } })
+vim.filetype.add({ pattern = { ['.*%.component%.html'] = 'htmlangular' } })

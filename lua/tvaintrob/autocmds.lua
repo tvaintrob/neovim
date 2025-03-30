@@ -47,24 +47,6 @@ vim.api.nvim_create_autocmd('FileType', {
 vim.api.nvim_create_autocmd('LspAttach', {
     group = augroup('lsp_attach'),
     callback = function(ev)
-        local client = vim.lsp.get_client_by_id(ev.data.client_id)
-        require('workspace-diagnostics').populate_workspace_diagnostics(client, ev.buf)
         require('tvaintrob.utils.lsp').lsp_keymaps(ev.buf)
-    end,
-})
-
-vim.api.nvim_create_autocmd('BufEnter', {
-    group = augroup('win_enter'),
-    callback = function()
-        vim.diagnostic.config({
-            signs = {
-                text = {
-                    [vim.diagnostic.severity.HINT] = '󰌵',
-                    [vim.diagnostic.severity.WARN] = ' ',
-                    [vim.diagnostic.severity.INFO] = ' ',
-                    [vim.diagnostic.severity.ERROR] = ' ',
-                },
-            },
-        })
     end,
 })
