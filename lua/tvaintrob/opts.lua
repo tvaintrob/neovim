@@ -1,32 +1,45 @@
--- Basic opts
+-- change the <leader> key
+vim.g.mapleader = ','
 
-vim.g.mapleader = ',' -- set the leaderkey to comma
+-- enable line numbers
+vim.o.number = true
+vim.o.relativenumber = true
 
-vim.opt.number = true -- enable line numbers
-vim.opt.relativenumber = true -- enable relative line numbers
-vim.opt.hidden = true -- enable hidden buffers, in unsaved state
-vim.opt.undofile = true -- enable undo state to carryover between sessions
-vim.opt.cursorline = true -- enable a cursorline highlight
-vim.opt.termguicolors = true -- enable 24bit colors in the terminal
-vim.opt.splitright = true -- new vertical splits will be created to the right
-vim.opt.splitbelow = true -- new horizontal splits will be created below
-vim.opt.hlsearch = false -- disable highlighting searched patterns after the search is accepted
-vim.opt.swapfile = false -- disable swapfiles creation, they are mostly trash
-vim.opt.scrolloff = 4 -- keep 4 lines offset when scrolling
-vim.opt.foldlevel = 10 -- setup initial fold level to 10
-vim.opt.modeline = true -- enable modeline parsing, allow setting options using in file directives
-vim.opt.mouse = 'a' -- enable mouse usage
-vim.opt.signcolumn = 'yes' -- always show the sign column
-vim.opt.smartcase = true
-vim.opt.eadirection = 'hor' -- resize windowns automatically only horizontaly
+-- enable undofile to store undo info across sessions
+vim.o.undofile = true
 
--- default tab settings,
--- should be overriden by editorconfig
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.softtabstop = 4
-vim.opt.smarttab = true
-vim.opt.expandtab = true
+-- enable cursor line highlight
+vim.o.cursorline = true
+
+-- enable better colors
+vim.o.termguicolors = true
+
+-- change split directions
+vim.o.splitright = true
+vim.o.splitbelow = true
+
+-- auto resize windows only horizontally
+vim.o.eadirection = 'hor'
+
+-- better search
+vim.o.hlsearch = false
+vim.o.smartcase = true
+
+-- disable swapfiles
+vim.o.swapfile = false
+
+-- try to keep atleast a few lines around the cursor
+vim.o.scrolloff = 4
+
+-- always show the sign column
+vim.o.signcolumn = 'yes'
+
+-- initial indent settings, expected to be overridden by editorconfig
+vim.o.tabstop = 4
+vim.o.shiftwidth = 4
+vim.o.softtabstop = 4
+vim.o.smarttab = true
+vim.o.expandtab = true
 
 -- define custom filetypes
 vim.filetype.add({ filename = { ['.envrc'] = 'bash' } })
@@ -34,3 +47,15 @@ vim.filetype.add({ extension = { ['json'] = 'jsonc' } })
 vim.filetype.add({ extension = { ['tf'] = 'terraform' } })
 vim.filetype.add({ pattern = { ['.*/templates/.*%.yaml'] = 'helm' } })
 vim.filetype.add({ pattern = { ['.*%.component%.html'] = 'htmlangular' } })
+
+-- define diagnostic signs
+vim.diagnostic.config({
+    signs = {
+        text = {
+            [vim.diagnostic.severity.HINT] = '󰌵',
+            [vim.diagnostic.severity.WARN] = ' ',
+            [vim.diagnostic.severity.INFO] = ' ',
+            [vim.diagnostic.severity.ERROR] = ' ',
+        },
+    },
+})

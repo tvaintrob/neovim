@@ -33,14 +33,3 @@ require('tvaintrob.utils.lazy').setup({
     -- { import = 'tvaintrob.extras.language.clangd' },
     -- { import = 'tvaintrob.extras.language.nushell' },
 })
-
-vim.diagnostic.config({
-    signs = {
-        text = {
-            [vim.diagnostic.severity.HINT] = '󰌵',
-            [vim.diagnostic.severity.WARN] = ' ',
-            [vim.diagnostic.severity.INFO] = ' ',
-            [vim.diagnostic.severity.ERROR] = ' ',
-        },
-    },
-})
