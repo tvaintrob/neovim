@@ -30,7 +30,7 @@ return {
                 ['angularls'] = function()
                     local util = require('lspconfig.util')
                     require('tvaintrob.utils.lsp').setup_server('angularls', {
-                        root_dir = util.root_pattern('package.json'),
+                        root_dir = util.root_pattern({ 'angular.json', 'project.json' }),
                     })
                 end,
             },

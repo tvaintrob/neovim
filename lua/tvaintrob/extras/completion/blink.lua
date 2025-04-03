@@ -5,6 +5,9 @@ return {
     dependencies = { 'xzbdmw/colorful-menu.nvim' },
     opts_extend = { 'sources.default' },
     opts = {
+        enabled = function()
+            return not vim.tbl_contains({ 'DressingInput' }, vim.bo.filetype)
+        end,
         keymap = { preset = 'enter' },
         cmdline = { enabled = false },
         signature = { enabled = true, window = { border = 'rounded' } },
