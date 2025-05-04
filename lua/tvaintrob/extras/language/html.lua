@@ -5,6 +5,7 @@ return {
             formatters_by_ft = {
                 css = { 'prettierd', 'prettier', stop_after_first = true },
                 html = { 'prettierd', 'prettier', stop_after_first = true },
+                htmlangular = { 'prettierd', 'prettier', stop_after_first = true },
             },
         },
     },
@@ -15,7 +16,6 @@ return {
             ensure_installed = {
                 'css-lsp',
                 'html-lsp',
-                'htmx-lsp',
                 'tailwindcss-language-server',
                 'prettierd',
                 'prettier',

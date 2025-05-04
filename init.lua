@@ -28,6 +28,12 @@ require('tvaintrob.utils.lazy').setup({
     { import = 'tvaintrob.extras.language.markdown' },
     { import = 'tvaintrob.extras.language.terraform' },
 
+    -- ai services
+    { import = 'tvaintrob.extras.ai' },
+
+    -- personal plugins
+    { dir = '~/workspaces/nvim-plugins/kube-schema.nvim', config = true },
+
     -- some additional configs, not actively using these langs
     -- { import = 'tvaintrob.extras.language.rust' },
     -- { import = 'tvaintrob.extras.language.clangd' },
