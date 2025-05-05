@@ -1,5 +1,5 @@
 return {
-    { 'someone-stole-my-name/yaml-companion.nvim', lazy = true },
+    { 'cenk1cenk2/schema-companion.nvim', lazy = true },
     { 'nvim-tree/nvim-web-devicons', lazy = true },
     {
         'nvim-lualine/lualine.nvim',

@@ -17,11 +17,11 @@ function M.lsp_server_names()
 end
 
 function M.yaml_schema()
-    local schema = require('yaml-companion').get_buf_schema(0)
-    if schema.result[1].name == 'none' then
+    local schema = require('schema-companion.context').get_buffer_schema().name
+    if schema == 'none' then
         return ''
     end
-    return schema and '  YAML: ' .. schema.result[1].name
+    return schema and '  YAML: ' .. schema
 end
 
 return M
