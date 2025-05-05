@@ -59,3 +59,6 @@ vim.diagnostic.config({
         },
     },
 })
+
+-- alias cc to CodeCompanion in command line mode
+vim.cmd([[cab cc CodeCompanion]])
