@@ -31,9 +31,6 @@ require('tvaintrob.utils.lazy').setup({
     -- ai services
     { import = 'tvaintrob.extras.ai' },
 
-    -- personal plugins
-    { dir = '~/workspaces/nvim-plugins/kube-schema.nvim', config = true },
-
     -- some additional configs, not actively using these langs
     -- { import = 'tvaintrob.extras.language.rust' },
     -- { import = 'tvaintrob.extras.language.clangd' },
