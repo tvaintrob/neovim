@@ -12,19 +12,14 @@ return {
             lsp = {
                 hover = { enabled = true },
                 progress = { enabled = true },
-                signature = { enabled = true },
+                signature = { enabled = false },
                 override = {
-                    ['cmp.entry.get_documentation'] = true,
                     ['vim.lsp.util.stylize_markdown'] = true,
                     ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
                 },
             },
             views = {
-                mini = {
-                    position = {
-                        row = -2,
-                    },
-                },
+                mini = { position = { row = -2 } },
             },
         },
     },

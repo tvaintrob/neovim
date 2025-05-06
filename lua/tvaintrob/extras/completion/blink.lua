@@ -2,10 +2,7 @@ return {
     'saghen/blink.cmp',
     event = { 'InsertEnter' },
     build = 'cargo build --release',
-    dependencies = {
-        'xzbdmw/colorful-menu.nvim',
-        'bydlw98/blink-cmp-env',
-    },
+    dependencies = { 'xzbdmw/colorful-menu.nvim' },
     opts_extend = { 'sources.default' },
     opts = {
         enabled = function()
@@ -13,7 +10,13 @@ return {
         end,
         keymap = { preset = 'enter' },
         cmdline = { enabled = false },
-        signature = { enabled = true, window = { border = 'rounded' } },
+        signature = {
+            enabled = true,
+            window = {
+                border = 'rounded',
+                show_documentation = true,
+            },
+        },
         appearance = { nerd_font_variant = 'mono' },
         fuzzy = {
             implementation = 'prefer_rust_with_warning',
@@ -50,7 +53,7 @@ return {
             list = { selection = { preselect = true, auto_insert = false } },
         },
         sources = {
-            default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer', 'env' },
+            default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer' },
             per_filetype = { sql = { 'dadbod' } },
             providers = {
                 dadbod = { module = 'vim_dadbod_completion.blink' },
@@ -58,15 +61,6 @@ return {
                     name = 'LazyDev',
                     module = 'lazydev.integrations.blink',
                     score_offset = 100,
-                },
-                env = {
-                    name = 'Env',
-                    module = 'blink-cmp-env',
-                    score_offset = -50,
-                    opts = {
-                        show_braces = false,
-                        show_documentation_window = true,
-                    },
                 },
             },
         },

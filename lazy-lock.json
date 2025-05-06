@@ -1,12 +1,10 @@
 {
   "VectorCode": { "branch": "main", "commit": "7bfcedc238e79ef6005abbb916ad58aca86192ee" },
-  "blink-cmp-env": { "branch": "main", "commit": "700b6d9542b9d5deea80121abbb46b1400ace302" },
   "blink.cmp": { "branch": "main", "commit": "70c73033c510ee3641393a4a081d3c85db91a641" },
   "codecompanion.nvim": { "branch": "main", "commit": "58fbf6f395201a655266a1144b684b5aafb5092d" },
   "colorful-menu.nvim": { "branch": "master", "commit": "f80feb8a6706f965321aff24d0ed3849f02a7f77" },
   "conform.nvim": { "branch": "master", "commit": "f9ef25a7ef00267b7d13bfc00b0dea22d78702d5" },
   "diffview.nvim": { "branch": "main", "commit": "4516612fe98ff56ae0415a259ff6361a89419b0a" },
-  "dressing.nvim": { "branch": "master", "commit": "2d7c2db2507fa3c4956142ee607431ddb2828639" },
   "gitsigns.nvim": { "branch": "main", "commit": "3c76f7fabac723aa682365ef782f88a83ccdb4ac" },
   "go.nvim": { "branch": "master", "commit": "9a6dfa5d741cdc8ff11d87bbeaca568733a1aca2" },
   "guihua.lua": { "branch": "master", "commit": "d783191eaa75215beae0c80319fcce5e6b3beeda" },
