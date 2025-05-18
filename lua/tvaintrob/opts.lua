@@ -60,5 +60,5 @@ vim.diagnostic.config({
     },
 })
 
--- alias cc to CodeCompanion in command line mode
-vim.cmd([[cab cc CodeCompanion]])
+vim.cmd([[cab t Telescope]])
+vim.cmd([[cab h Telescope help_tags]])
