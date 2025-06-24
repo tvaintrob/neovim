@@ -18,21 +18,6 @@ return {
                 'vtsls',
                 'prettierd',
                 'prettier',
-                'angular-language-server',
-            },
-        },
-    },
-
-    {
-        'williamboman/mason-lspconfig.nvim',
-        opts = {
-            handlers = {
-                ['angularls'] = function()
-                    local util = require('lspconfig.util')
-                    require('tvaintrob.utils.lsp').setup_server('angularls', {
-                        root_dir = util.root_pattern({ 'angular.json', 'project.json' }),
-                    })
-                end,
             },
         },
     },

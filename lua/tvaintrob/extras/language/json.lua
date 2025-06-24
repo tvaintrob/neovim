@@ -3,9 +3,9 @@ return {
         'stevearc/conform.nvim',
         opts = {
             formatters_by_ft = {
-                json = { 'prettierd', 'prettier', stop_after_first = true },
-                jsonc = { 'prettierd', 'prettier', stop_after_first = true },
-                json5 = { 'prettierd', 'prettier', stop_after_first = true },
+                json = { 'prettier', stop_after_first = true },
+                jsonc = { 'prettier', stop_after_first = true },
+                json5 = { 'prettier', stop_after_first = true },
             },
         },
     },
