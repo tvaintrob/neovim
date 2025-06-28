@@ -51,5 +51,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
         set('n', '<leader>d', function()
             vim.diagnostic.open_float({ scope = 'line', border = 'single' })
         end, with({ desc = 'Show line diagnostics' }))
+
+        set('n', 'K', function()
+            vim.lsp.buf.hover({ border = 'rounded' })
+        end, { desc = 'Hover Documentation' })
     end,
 })

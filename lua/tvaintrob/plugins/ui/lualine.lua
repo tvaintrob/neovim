@@ -14,6 +14,14 @@ local function lsp_server_names()
     end
 end
 
+local function yaml_schema()
+    local schema = require('schema-companion.context').get_buffer_schema().name
+    if schema == 'none' then
+        return ''
+    end
+    return schema and '  YAML: ' .. schema
+end
+
 return {
     {
         'nvim-lualine/lualine.nvim',
@@ -30,7 +38,7 @@ return {
             sections = {
                 lualine_c = { { 'filename', path = 1 }, 'navic' },
                 lualine_x = {
-                    -- require('tvaintrob.utils.lualine').yaml_schema,
+                    yaml_schema,
                     lsp_server_names,
                     'encoding',
                     'filetype',
