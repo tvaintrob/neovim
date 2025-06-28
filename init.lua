@@ -70,7 +70,10 @@ require('tvaintrob.lazy').setup({
     { import = 'tvaintrob.langs.bash' },
     { import = 'tvaintrob.langs.python' },
     { import = 'tvaintrob.langs.typescript' },
+    { import = 'tvaintrob.langs.docker' },
 
-    -- markup languages
     { import = 'tvaintrob.langs.json' },
+    { import = 'tvaintrob.langs.html' },
+    { import = 'tvaintrob.langs.markdown' },
+    { import = 'tvaintrob.langs.terraform' },
 })
