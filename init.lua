@@ -59,13 +59,11 @@ vim.diagnostic.config({
     },
 })
 
-vim.cmd([[cab t Telescope]])
-vim.cmd([[cab h Telescope help_tags]])
-
 require('tvaintrob.lazy').setup({
     { import = 'tvaintrob.plugins.editor' },
     { import = 'tvaintrob.plugins.git' },
     { import = 'tvaintrob.plugins.intellisense' },
+    { import = 'tvaintrob.plugins.ui' },
 
     -- language packs
     { import = 'tvaintrob.langs.lua' },
