@@ -18,6 +18,7 @@ return {
                 'vtsls',
                 'prettierd',
                 'prettier',
+                'eslint-lsp',
                 'js-debug-adapter',
                 'chrome-debug-adapter',
             },
