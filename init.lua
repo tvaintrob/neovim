@@ -68,6 +68,7 @@ require('tvaintrob.lazy').setup({
 
     -- language packs
     { import = 'tvaintrob.langs.lua' },
+    { import = 'tvaintrob.langs.go' },
     { import = 'tvaintrob.langs.bash' },
     { import = 'tvaintrob.langs.python' },
     { import = 'tvaintrob.langs.typescript' },
