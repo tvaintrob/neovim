@@ -25,6 +25,25 @@ vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { silent = true, noremap = true })
 vim.keymap.set('n', 'Q', '<nop>', { noremap = true })
 vim.keymap.set('n', 'q:', '<nop>', { noremap = true })
 
+-- open claude in tmux pane
+vim.keymap.set('n', '<leader><cr>', function()
+    -- check if a pane with claude title exists
+    local panes = vim.fn.system(
+        'tmux list-panes -a -F "#{session_name}:#{window_index}.#{pane_index} #{pane_title}"'
+    )
+    local claude_pane = panes:match('([^%s]+)%s+claude%-ai')
+
+    if claude_pane then
+        -- switch to existing claude pane
+        vim.fn.system('tmux switch-client -t ' .. claude_pane)
+        vim.fn.system('tmux select-pane -t ' .. claude_pane)
+    else
+        -- create new pane with claude and set title
+        vim.fn.system('tmux split-window -h -l 100 claude')
+        vim.fn.system('tmux select-pane -T "claude-ai"')
+    end
+end, { noremap = true, silent = true, desc = 'Open Claude in tmux pane' })
+
 -- define keymaps when LSP is attached
 vim.api.nvim_create_autocmd('LspAttach', {
     group = vim.api.nvim_create_augroup('lsp_attach', { clear = true }),
