@@ -21,7 +21,6 @@ return {
                 'prettier',
                 'eslint-lsp',
                 'js-debug-adapter',
-                'chrome-debug-adapter',
             },
         },
     },
