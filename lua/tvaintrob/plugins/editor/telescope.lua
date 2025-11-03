@@ -35,7 +35,20 @@ return {
                 },
                 pickers = {
                     find_files = {
-                        find_command = { 'rg', '--files', '--hidden', '-g', '!.git' },
+                        find_command = {
+                            'rg',
+                            '--files',
+                            '--hidden',
+                            '-g',
+                            '!.git',
+                            '-g',
+                            '!packages/*/gen/**',
+                        },
+                    },
+                    live_grep = {
+                        additional_args = function()
+                            return { '-g', '!packages/*/gen/**' }
+                        end,
                     },
                 },
                 extensions = {

@@ -23,6 +23,7 @@ vim.opt.eadirection = 'hor'
 
 -- better search
 vim.opt.hlsearch = false
+vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 -- disable swapfiles

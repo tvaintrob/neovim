@@ -55,6 +55,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
         set('n', 'gr', vim.lsp.buf.references, with({ desc = 'Show references' }))
         set('n', 'gd', vim.lsp.buf.definition, with({ desc = 'Go to definition' }))
+        set('n', 'gD', function()
+            vim.cmd('vsplit')
+            vim.lsp.buf.definition()
+        end, with({ desc = 'Go to definition in vertical split' }))
         set('n', '<leader>rn', vim.lsp.buf.rename, with({ desc = 'Rename symbol' }))
         set(
             { 'n', 'v' },
