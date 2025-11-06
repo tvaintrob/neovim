@@ -64,7 +64,9 @@ require('tvaintrob.lazy').setup({
     { import = 'tvaintrob.plugins.editor' },
     { import = 'tvaintrob.plugins.git' },
     { import = 'tvaintrob.plugins.intellisense' },
+    { import = 'tvaintrob.plugins.debugging' },
     { import = 'tvaintrob.plugins.ui' },
+    { import = 'tvaintrob.plugins.db' },
 
     -- language packs
     { import = 'tvaintrob.langs.lua' },
