@@ -25,24 +25,36 @@ vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { silent = true, noremap = true })
 vim.keymap.set('n', 'Q', '<nop>', { noremap = true })
 vim.keymap.set('n', 'q:', '<nop>', { noremap = true })
 
--- open claude in tmux pane
+-- open opencode in tmux pane
 vim.keymap.set('n', '<leader><cr>', function()
-    -- check if a pane with claude title exists
+    -- check if a pane with opencode title exists
     local panes = vim.fn.system(
         'tmux list-panes -a -F "#{session_name}:#{window_index}.#{pane_index} #{pane_title}"'
     )
-    local claude_pane = panes:match('([^%s]+)%s+claude%-ai')
+    local opencode_pane = panes:match('([^%s]+)%s+opencode')
 
-    if claude_pane then
-        -- switch to existing claude pane
-        vim.fn.system('tmux switch-client -t ' .. claude_pane)
-        vim.fn.system('tmux select-pane -t ' .. claude_pane)
+    if opencode_pane then
+        -- switch to existing opencode pane
+        vim.fn.system('tmux switch-client -t ' .. opencode_pane)
+        vim.fn.system('tmux select-pane -t ' .. opencode_pane)
     else
-        -- create new pane with claude and set title
-        vim.fn.system('tmux split-window -h -l 100 claude')
-        vim.fn.system('tmux select-pane -T "claude-ai"')
+        local command
+        for _, candidate in ipairs({ 'opencode', 'open-opencode', 'cursor open opencode' }) do
+            local executable = candidate:match('^([^%s]+)')
+            if executable and vim.fn.executable(executable) == 1 then
+                command = candidate
+                break
+            end
+        end
+        command = command or 'opencode'
+
+        -- create new pane with opencode and set title
+        vim.fn.system(
+            string.format('tmux split-window -h -l 100 %s', vim.fn.shellescape(command))
+        )
+        vim.fn.system('tmux select-pane -T "opencode"')
     end
-end, { noremap = true, silent = true, desc = 'Open Claude in tmux pane' })
+end, { noremap = true, silent = true, desc = 'Open OpenCode in tmux pane' })
 
 -- define keymaps when LSP is attached
 vim.api.nvim_create_autocmd('LspAttach', {
