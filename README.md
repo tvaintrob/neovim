@@ -1,5 +1,6 @@
 # Neovim Config
 
+
 Personal Neovim configuration.
 
 ## Installation
