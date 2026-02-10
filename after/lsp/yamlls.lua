@@ -9,6 +9,12 @@ return require('schema-companion').setup_client(require('schema-companion').adap
                 uri = 'https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/master-standalone-strict/all.json',
             },
             {
+                name = 'process-compose.yaml',
+                uri = 'https://raw.githubusercontent.com/F1bonacc1/process-compose/refs/heads/main/schemas/process-compose-schema.json',
+                fileMatch = { 'process-compose.yaml', 'process-compose.yml' },
+                description = 'Process compose schema',
+            },
+            {
                 name = 'Taskfile.yaml',
                 url = 'https://taskfile.dev/schema.json',
                 fileMatch = { 'taskfile.yml', 'taskfile.yaml' },
