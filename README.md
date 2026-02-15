@@ -19,3 +19,7 @@ The following are required to use the configuration:
 - Neovim >= 0.11.0
 - A [nerd-font](https://github.com/ryanoasis/nerd-fonts) for glyphs.
 - [Pre-commit](https://pre-commit.com/) when editing the configuration.
+
+## Sample
+
+This is a sample line added to the README.
