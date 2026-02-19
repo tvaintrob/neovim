@@ -1,6 +1,6 @@
-# Neovim Config
+# The Neovim Forge
 
-Personal Neovim configuration.
+A hand-crafted Neovim configuration, forged in the fires of countless late-night coding sessions.
 
 ## Installation
 
