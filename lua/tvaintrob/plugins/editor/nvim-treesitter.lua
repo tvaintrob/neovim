@@ -1,3 +1,15 @@
+local function select_textobject(query)
+    return function()
+        require('nvim-treesitter-textobjects.select').select_textobject(query, 'textobjects')
+    end
+end
+
+local function move(direction, query)
+    return function()
+        require('nvim-treesitter-textobjects.move')['goto_' .. direction](query, 'textobjects')
+    end
+end
+
 return {
     { 'folke/ts-comments.nvim', event = 'LazyFile', opts = {} },
 
@@ -11,66 +23,96 @@ return {
     },
 
     {
-        'nvim-treesitter/nvim-treesitter',
-        event = 'LazyFile',
-        cmd = 'TSUpdate',
-        build = ':TSUpdate',
-        dependencies = {
-            { 'RRethy/nvim-treesitter-endwise' },
-            { 'nvim-treesitter/nvim-treesitter-textobjects' },
-        },
+        'whoissethdaniel/mason-tool-installer.nvim',
         opts = {
-            auto_install = true,
-            indent = { enable = true },
-            endwise = { enable = true },
-            highlight = {
-                enable = true,
-                additional_vim_regex_highlighting = false,
-            },
-            textobjects = {
-                select = {
-                    enable = true,
-                    lookahead = true,
-                    keymaps = {
-                        -- You can use the capture groups defined in textobjects.scm
-                        ['af'] = { query = '@function.outer', desc = 'around a function' },
-                        ['if'] = { query = '@function.inner', desc = 'inner part of a function' },
-                        ['ac'] = { query = '@class.outer', desc = 'around a class' },
-                        ['ic'] = { query = '@class.inner', desc = 'inner part of a class' },
-                        ['ai'] = { query = '@conditional.outer', desc = 'around an if statement' },
-                        ['ii'] = {
-                            query = '@conditional.inner',
-                            desc = 'inner part of an if statement',
-                        },
-                        ['al'] = { query = '@loop.outer', desc = 'around a loop' },
-                        ['il'] = { query = '@loop.inner', desc = 'inner part of a loop' },
-                    },
-                    selection_modes = {
-                        ['@function.outer'] = 'v', -- charwise
-                        ['@conditional.outer'] = 'V', -- linewise
-                        ['@loop.outer'] = 'V', -- linewise
-                        ['@class.outer'] = '<c-v>', -- blockwise
-                    },
-                    include_surrounding_whitespace = false,
-                },
-                move = {
-                    enable = true,
-                    set_jumps = true, -- whether to set jumps in the jumplist
-                    goto_previous_start = {
-                        ['[p'] = { query = '@parameter.inner', desc = 'Previous parameter' },
-                        ['[f'] = { query = '@function.outer', desc = 'Previous function' },
-                        ['[c'] = { query = '@class.outer', desc = 'Previous class' },
-                    },
-                    goto_next_start = {
-                        [']f'] = { query = '@function.outer', desc = 'Next function' },
-                        [']c'] = { query = '@class.outer', desc = 'Next class' },
-                        [']p'] = { query = '@parameter.inner', desc = 'Next parameter' },
-                    },
-                },
+            ensure_installed = {
+                'tree-sitter-cli',
             },
         },
-        config = function(_, opts)
-            require('nvim-treesitter.configs').setup(opts)
+    },
+
+    {
+        'nvim-treesitter/nvim-treesitter',
+        branch = 'main',
+        lazy = false,
+        build = ':TSUpdate',
+        config = function()
+            -- pass install_dir explicitly so it gets added back to the
+            -- runtimepath, lazy.nvim resets rtp and drops the site dir
+            require('nvim-treesitter').setup({
+                install_dir = vim.fs.joinpath(vim.fn.stdpath('data'), 'site'),
+            })
+
+            local function start(buf, lang)
+                vim.treesitter.start(buf, lang)
+                vim.bo[buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+            end
+
+            vim.api.nvim_create_autocmd('FileType', {
+                group = vim.api.nvim_create_augroup('treesitter_start', { clear = true }),
+                callback = function(ev)
+                    local lang = vim.treesitter.language.get_lang(ev.match)
+                    if not lang then
+                        return
+                    end
+
+                    if pcall(start, ev.buf, lang) then
+                        return
+                    end
+
+                    -- parser not installed yet, install it and retry
+                    if
+                        vim.tbl_contains(require('nvim-treesitter.config').get_available(), lang)
+                    then
+                        require('nvim-treesitter').install({ lang }):await(function()
+                            if vim.api.nvim_buf_is_valid(ev.buf) then
+                                pcall(start, ev.buf, lang)
+                            end
+                        end)
+                    end
+                end,
+            })
         end,
+    },
+
+    {
+        'nvim-treesitter/nvim-treesitter-textobjects',
+        branch = 'main',
+        event = 'LazyFile',
+        dependencies = { 'nvim-treesitter/nvim-treesitter' },
+        opts = {
+            select = {
+                lookahead = true,
+                include_surrounding_whitespace = false,
+                selection_modes = {
+                    ['@function.outer'] = 'v', -- charwise
+                    ['@conditional.outer'] = 'V', -- linewise
+                    ['@loop.outer'] = 'V', -- linewise
+                    ['@class.outer'] = '<c-v>', -- blockwise
+                },
+            },
+            move = {
+                set_jumps = true,
+            },
+        },
+        keys = {
+            -- stylua: ignore start
+            { 'af', select_textobject('@function.outer'), mode = { 'x', 'o' }, desc = 'around a function' },
+            { 'if', select_textobject('@function.inner'), mode = { 'x', 'o' }, desc = 'inner part of a function' },
+            { 'ac', select_textobject('@class.outer'), mode = { 'x', 'o' }, desc = 'around a class' },
+            { 'ic', select_textobject('@class.inner'), mode = { 'x', 'o' }, desc = 'inner part of a class' },
+            { 'ai', select_textobject('@conditional.outer'), mode = { 'x', 'o' }, desc = 'around an if statement' },
+            { 'ii', select_textobject('@conditional.inner'), mode = { 'x', 'o' }, desc = 'inner part of an if statement' },
+            { 'al', select_textobject('@loop.outer'), mode = { 'x', 'o' }, desc = 'around a loop' },
+            { 'il', select_textobject('@loop.inner'), mode = { 'x', 'o' }, desc = 'inner part of a loop' },
+
+            { '[p', move('previous_start', '@parameter.inner'), mode = { 'n', 'x', 'o' }, desc = 'Previous parameter' },
+            { '[f', move('previous_start', '@function.outer'), mode = { 'n', 'x', 'o' }, desc = 'Previous function' },
+            { '[c', move('previous_start', '@class.outer'), mode = { 'n', 'x', 'o' }, desc = 'Previous class' },
+            { ']p', move('next_start', '@parameter.inner'), mode = { 'n', 'x', 'o' }, desc = 'Next parameter' },
+            { ']f', move('next_start', '@function.outer'), mode = { 'n', 'x', 'o' }, desc = 'Next function' },
+            { ']c', move('next_start', '@class.outer'), mode = { 'n', 'x', 'o' }, desc = 'Next class' },
+            -- stylua: ignore end
+        },
     },
 }

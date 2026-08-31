@@ -37,6 +37,9 @@ vim.opt.scrolloff = 4
 -- always show the sign column
 vim.opt.signcolumn = 'yes'
 
+-- default border for all floating windows
+vim.o.winborder = 'rounded'
+
 -- initial indent settings, expected to be overridden by editorconfig
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
