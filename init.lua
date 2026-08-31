@@ -1,6 +1,8 @@
 -- change the <leader> key
 vim.g.mapleader = ','
 
+vim.o.exrc = true
+
 -- enable line numbers
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -79,6 +81,7 @@ require('tvaintrob.lazy').setup({
     { import = 'tvaintrob.langs.json' },
     { import = 'tvaintrob.langs.yaml' },
     { import = 'tvaintrob.langs.html' },
+    { import = 'tvaintrob.langs.rust' },
     { import = 'tvaintrob.langs.markdown' },
     { import = 'tvaintrob.langs.terraform' },
 })

@@ -33,7 +33,7 @@ vim.keymap.set('n', '<leader><cr>', function()
     if claude_pane then
         vim.fn.system('tmux select-pane -t ' .. claude_pane)
     else
-        vim.fn.system('tmux split-window -h -l 100 claude')
+        vim.fn.system("tmux split-window -h -l 100 'claude --allow-dangerously-skip-permissions'")
         vim.fn.system('tmux set-option -p @claude_pane 1')
     end
 end, { noremap = true, silent = true, desc = 'Open Claude in tmux pane' })
