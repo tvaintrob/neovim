@@ -23,12 +23,25 @@ return {
     },
 
     {
+        'whoissethdaniel/mason-tool-installer.nvim',
+        opts = {
+            ensure_installed = {
+                'tree-sitter-cli',
+            },
+        },
+    },
+
+    {
         'nvim-treesitter/nvim-treesitter',
         branch = 'main',
         lazy = false,
         build = ':TSUpdate',
         config = function()
-            require('nvim-treesitter').setup({})
+            -- pass install_dir explicitly so it gets added back to the
+            -- runtimepath, lazy.nvim resets rtp and drops the site dir
+            require('nvim-treesitter').setup({
+                install_dir = vim.fs.joinpath(vim.fn.stdpath('data'), 'site'),
+            })
 
             local function start(buf, lang)
                 vim.treesitter.start(buf, lang)
