@@ -44,7 +44,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(ev)
         local set = vim.keymap.set
         local function with(opts)
-            return vim.tbl_extend('force', { buffer = ev.buf, noremap = true }, opts)
+            return vim.tbl_extend('force', { buf = ev.buf, noremap = true }, opts)
         end
 
         set('n', 'gr', vim.lsp.buf.references, with({ desc = 'Show references' }))
@@ -66,11 +66,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         end, with({ desc = 'Toggle inlay hints' }))
 
         set('n', '<leader>d', function()
-            vim.diagnostic.open_float({ scope = 'line', border = 'single' })
+            vim.diagnostic.open_float({ scope = 'line' })
         end, with({ desc = 'Show line diagnostics' }))
-
-        set('n', 'K', function()
-            vim.lsp.buf.hover({ border = 'rounded' })
-        end, { desc = 'Hover Documentation' })
     end,
 })

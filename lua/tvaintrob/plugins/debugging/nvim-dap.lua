@@ -111,7 +111,7 @@ return {
                             keymap.mode,
                             keymap.lhs,
                             keymap.callback,
-                            { buffer = keymap.buffer, silent = keymap.silent == 1 }
+                            { buf = keymap.buffer, silent = keymap.silent == 1 }
                         )
                     end
                 end
